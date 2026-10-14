@@ -1,0 +1,98 @@
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0030,len:4876
+ho 0 tail 12 room 4
+load:0x40078000,len:16560
+load:0x40080400,len:3500
+entry 0x400805b4
+
+[INIT] Starting Civic FC 1.8 Maintenance HUD...
+[WEB] Wi-Fi paused for OBD distance test
+[OBD] Non-blocking FreeRTOS ObdWorker running on Core 0
+[HEAP] ready free=70320 largest=63476 min=69940
+[INIT] Systems ready! Rendering Layout C...
+[SYNCED] reference_odo=298772 reference_pid=4175 saved=1
+[OBD] Connecting to 'OBDII' (PIN: 1234)...
+[OBD] BT SPP link established! Initializing ELM327...
+[OBD_REPLY] cmd=ATZ prompt=1 raw=ELM327 v1.5||
+[OBD_REPLY] cmd=ATE0 prompt=1 raw=ATE0|OK||
+[OBD_REPLY] cmd=ATL0 prompt=1 raw=OK||
+[OBD_REPLY] cmd=ATS1 prompt=1 raw=OK||
+[OBD_STATUS] BT=1 ECU=0 SPEED=0 PID31=0 HAS31=0 SUPPORTED31=1 VOLTAGE=0.00 AGE_MS=4294967295 ODO=298772 FRACTION=0.000000
+[OBD_REPLY] cmd=ATH0 prompt=1 raw=OK||
+[OBD_REPLY] cmd=ATSP0 prompt=1 raw=OK||
+[OBD_REPLY] cmd=0100 prompt=1 raw=SEARCHING...|41 00 BE 3F A8 13 ||
+[OBD_SUPPORTED] pid00_valid=1 adapter_ready=1
+[OBD_REPLY] cmd=010D prompt=1 raw=41 0D 0F ||
+[OBD_PARSED] speed_kmh=15 ready=1
+[OBD_REPLY] cmd=ATRV prompt=1 raw=14.6V||
+[OBD] Adapter initialized; ECU data_ready=1. Keeping live BT link.
+[OBD_REPLY] cmd=0131 prompt=1 raw=41 31 10 56 ||
+[OBD_PARSED] pid31_km=4182
+[OBD_REPLY] cmd=0105 prompt=1 raw=41 05 79 ||
+[OBD_REPLY] cmd=ATRV prompt=1 raw=14.4V||
+[OBD_REPLY] cmd=010D prompt=1 raw=41 0D 14 ||
+[OBD_PARSED] speed_kmh=20 odo_km=298779
+[OBD_REPLY] cmd=010D prompt=1 raw=41 0D 16 ||
+[OBD_PARSED] speed_kmh=22 odo_km=298779
+[OBD_REPLY] cmd=010D prompt=1 raw=41 0D 18 ||
+[OBD_PARSED] speed_kmh=24 odo_km=298779
+[OBD_REPLY] cmd=0131 prompt=1 raw=41 31 10 56 ||
+[OBD_PARSED] pid31_km=4182
+[OBD_REPLY] cmd=010D prompt=1 raw=41 0D 18 ||
+[OBD_PARSED] speed_kmh=24 odo_km=298779
+[OBD_REPLY] cmd=0105 prompt=1 raw=41 05 79 ||
+[OBD_REPLY] cmd=ATRV prompt=1 raw=14.0V||
+[OBD_REPLY] cmd=010D prompt=1 raw=41 0D 17 ||
+[OBD_PARSED] speed_kmh=23 odo_km=298779
+[OBD_REPLY] cmd=010D prompt=1 raw=41 0D 16 ||
+[OBD_PARSED] speed_kmh=22 odo_km=298779
+[OBD_REPLY] cmd=0131 prompt=1 raw=41 31 10 56 ||
+[OBD_PARSED] pid31_km=4182
+[OBD_REPLY] cmd=010D prompt=1 raw=41 0D 13 ||
+[OBD_PARSED] speed_kmh=19 odo_km=298779
+[OBD_REPLY] cmd=010D prompt=1 raw=41 0D 11 ||
+[OBD_PARSED] speed_kmh=17 odo_km=298779
+[OBD_REPLY] cmd=010D prompt=1 raw=41 0D 0F ||
+[OBD_PARSED] speed_kmh=15 odo_km=298779
+[OBD_REPLY] cmd=0105 prompt=1 raw=41 05 7A ||
+[OBD_REPLY] cmd=ATRV prompt=1 raw=14.6V||
+[OBD_REPLY] cmd=010D prompt=1 raw=41 0D 0E ||
+[OBD_PARSED] speed_kmh=14 odo_km=298779
+[OBD_REPLY] cmd=0131 prompt=1 raw=41 31 10 56 ||
+[OBD_PARSED] pid31_km=4182
+[OBD_REPLY] cmd=010D prompt=1 raw=41 0D 0E ||
+[OBD_PARSED] speed_kmh=14 odo_km=298779
+[OBD_REPLY] cmd=010D prompt=1 raw=41 0D 0F ||
+[OBD_PARSED] speed_kmh=15 odo_km=298779
+[OBD_STATUS] BT=1 ECU=1 SPEED=14 PID31=4182 HAS31=1 SUPPORTED31=1 VOLTAGE=14.60 AGE_MS=867 ODO=298779 FRACTION=0.000000
+[STATE] ODO=298779 PID=4182 VALID=1 FRACTION=0.000000 PAGE=0 ITEMS=14
+[ITEM] oil|10000|90000|1|12 ส.ค. 26|🛢️ น้ำมันเครื่อง + กรอง
+[ITEM] cvt|25000|80000|1|10 ม.ค. 26|⚙️ น้ำมันเกียร์ CVT
+[ITEM] tire|10000|88800|1|15 พ.ค. 26|🔄 สลับยาง & ถ่วงล้อ
+[ITEM] air|20000|86740|1|15 พ.ค. 26|🌬️ กรองอากาศเครื่องยนต์
+[ITEM] cabin|15000|86640|1|25 มี.ค. 26|❄️ กรองแอร์ห้องโดยสาร
+[ITEM] brake|40000|72000|1|10 ก.ย. 24|🛑 น้ำมันเบรก
+[ITEM] bpads|40000|75000|1|20 ก.ค. 25|🛑 ผ้าเบรก
+[ITEM] plugs|60000|55000|1|10 พ.ค. 25|⚡ หัวเทียน (Iridium)
+[ITEM] batt|0|0|1|5 ธ.ค. 25|🔋 แบตเตอรี่
+[ITEM] cool|100000|0|1|10 พ.ย. 18|💧 น้ำยาหม้อน้ำ
+[ITEM] prb|0|0|1|15 พ.ย. 25|📄 ภาษี & พ.ร.บ.
+[ITEM] lpg_f|20000|85000|1|20 ก.พ. 26|⛽ กรองแก๊ส LPG
+[ITEM] lpg_t|10000|92000|1|15 มิ.ย. 26|🔧 เช็ครั่ว/จูนแก๊ส
+[ITEM] lpg_v|40000|65000|1|15 ก.ย. 25|⚙️ เช็คระยะวาล์ว LPG
+[STATE_END]
+[OBD_REPLY] cmd=010D prompt=1 raw=41 0D 11 ||
+[OBD_PARSED] speed_kmh=17 odo_km=298779
+[OBD_REPLY] cmd=0131 prompt=1 raw=41 31 10 56 ||
+[OBD_PARSED] pid31_km=4182
+[OBD_REPLY] cmd=010D prompt=1 raw=41 0D 13 ||
+[OBD_PARSED] speed_kmh=19 odo_km=298779
+[OBD_REPLY] cmd=0105 prompt=1 raw=41 05 7A ||
+[OBD_REPLY] cmd=ATRV prompt=1 raw=14.3V||
+[w=41 0D 16 ||
+[OBD_PARSED] speed_kmh=22 odo_km=298779

@@ -1,0 +1,19 @@
+# Build caches and local secrets
+.DS_Store
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.keystore
+local.properties
+.gradle/
+build/
+.pio/
+__pycache__/
+*credentials*.json
+*service-account*.json
+*token*.txt
+*flash_backup*.bin
+*nvs*.bin

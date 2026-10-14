@@ -1,0 +1,75 @@
+ets Jul 29 2019 12:21:46
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0030,len:4876
+ho 0 tail 12 room 4
+load:0x40078000,len:16560
+load:0x40080400,len:3500
+entry 0x400805b4
+[INIT] Starting Civic FC 1.8 Maintenance HUD...
+[WEB] Wi-Fi paused for OBD distance test
+[OBD] Non-blocking FreeRTOS ObdWorker running on Core 0
+[HEAP] ready free=75912 largest=69620 min=75532
+[INIT] Systems ready! Rendering Layout C...
+[OBD] Connecting to 'OBDII' (PIN: 1234)...
+[OBD] BT SPP link established! Initializing ELM327...
+[OBD_REPLY] cmd=ATZ prompt=1 raw=ELM327 v1.5||
+[OBD_REPLY] cmd=ATE0 prompt=1 raw=ATE0|OK||
+[OBD_REPLY] cmd=ATL0 prompt=1 raw=OK||
+[OBD_REPLY] cmd=ATS1 prompt=1 raw=OK||
+[OBD_REPLY] cmd=ATH0 prompt=1 raw=OK||
+[OBD_REPLY] cmd=ATSP0 prompt=1 raw=OK||
+[OBD_STATUS] BT=1 ECU=0 SPEED=0 PID31=0 HAS31=0 SUPPORTED31=1 VOLTAGE=0.00 AGE_MS=4294967295 ODO=298958 FRACTION=0.000000
+[OBD_REPLY] cmd=0100 prompt=1 raw=SEARCHING...|UNABLE TO CONNECT||
+[OBD_SUPPORTED] pid00_valid=0 adapter_ready=1
+[HOTSPOT] state=1 paused=0 ssid=CivicHUD ip=0.0.0.0 heap=61768
+[MONITOR] uptime_s=22 samples=22 heap_total=231340 free_now=61816 free_min=61716 free_max=68776 free_delta=7060 boot_min=58972 largest=55284 ram_used_pct=73.2 cpu0_valid=1 cpu0_now=0.7 cpu0_min=0.3 cpu0_max=2.0 cpu1_valid=1 cpu1_now=0.6 cpu1_min=0.6 cpu1_max=2.3 state_bytes=104
+[OBD_STATUS] BT=1 ECU=0 SPEED=0 PID31=0 HAS31=0 SUPPORTED31=1 VOLTAGE=0.00 AGE_MS=4294967295 ODO=298958 FRACTION=0.000000
+[OBD_REPLY] cmd=010D prompt=0 raw=SEARCHING...|
+[OBD] Adapter ready; speed unavailable. Keeping BT for PID31 and diagnostics.
+[OBD_REPLY] cmd=ATRV prompt=1 raw=12.7V||
+[OBD] Adapter initialized; ECU data_ready=0. Keeping live BT link.
+[OBD] Paused for settings hotspot
+[WEB] CivicHUD active http://192.168.1.1 heap=108204
+[HOTSPOT] state=2 paused=1 ssid=CivicHUD ip=192.168.1.1 heap=108204
+[MONITOR] uptime_s=30 samples=30 heap_total=231340 free_now=108204 free_min=61536 free_max=108204 free_delta=46668 boot_min=58900 largest=55284 ram_used_pct=53.2 cpu0_valid=1 cpu0_now=0.8 cpu0_min=0.3 cpu0_max=2.0 cpu1_valid=1 cpu1_now=0.7 cpu1_min=0.6 cpu1_max=2.3 state_bytes=104
+[OBD_STATUS] BT=0 ECU=0 SPEED=0 PID31=0 HAS31=0 SUPPORTED31=1 VOLTAGE=0.00 AGE_MS=4294967295 ODO=298958 FRACTION=0.000000
+[OBD] Resuming after settings hotspot
+[OBD] Connecting to 'OBDII' (PIN: 1234)...
+[OBD] BT SPP link established! Initializing ELM327...
+[HOTSPOT] state=0 paused=0 ssid=CivicHUD ip=0.0.0.0 heap=42564
+[MONITOR] uptime_s=38 samples=38 heap_total=231340 free_now=124180 free_min=61536 free_max=124180 free_delta=62644 boot_min=58900 largest=55284 ram_used_pct=46.3 cpu0_valid=1 cpu0_now=0.4 cpu0_min=0.3 cpu0_max=2.0 cpu1_valid=1 cpu1_now=1.0 cpu1_min=0.6 cpu1_max=2.3 state_bytes=104
+[OBD_STATUS] BT=1 ECU=0 SPEED=0 PID31=0 HAS31=0 SUPPORTED31=1 VOLTAGE=0.00 AGE_MS=4294967295 ODO=298958 FRACTION=0.000000
+[OBD_REPLY] cmd=ATZ prompt=1 raw=ELM327 v1.5||
+[OBD_REPLY] cmd=ATE0 prompt=1 raw=ATE0|OK||
+[OBD_REPLY] cmd=ATL0 prompt=1 raw=OK||
+[OBD_REPLY] cmd=ATS1 prompt=1 raw=OK||
+[OBD_REPLY] cmd=ATH0 prompt=1 raw=OK||
+[OBD_REPLY] cmd=ATSP0 prompt=1 raw=OK||
+[HOTSPOT] state=0 paused=0 ssid=CivicHUD ip=0.0.0.0 heap=42564
+[MONITOR] uptime_s=46 samples=46 heap_total=231340 free_now=42564 free_min=42564 free_max=124180 free_delta=81616 boot_min=39536 largest=34804 ram_used_pct=81.6 cpu0_valid=1 cpu0_now=0.6 cpu0_min=0.3 cpu0_max=10.2 cpu1_valid=1 cpu1_now=0.6 cpu1_min=0.6 cpu1_max=2.3 state_bytes=104
+[OBD_STATUS] BT=1 ECU=0 SPEED=0 PID31=0 HAS31=0 SUPPORTED31=1 VOLTAGE=0.00 AGE_MS=4294967295 ODO=298958 FRACTION=0.000000
+[OBD_REPLY] cmd=0100 prompt=1 raw=SEARCHING...|UNABLE TO CONNECT||
+[OBD_SUPPORTED] pid00_valid=0 adapter_ready=1
+[OBD_REPLY] cmd=010D prompt=0 raw=SEARCHING...|
+[OBD] Adapter ready; speed unavailable. Keeping BT for PID31 and diagnostics.
+[HOTSPOT] state=0 paused=0 ssid=CivicHUD ip=0.0.0.0 heap=42564
+[MONITOR] uptime_s=54 samples=54 heap_total=231340 free_now=42564 free_min=42516 free_max=124180 free_delta=81664 boot_min=39536 largest=34804 ram_used_pct=81.6 cpu0_valid=1 cpu0_now=0.7 cpu0_min=0.3 cpu0_max=10.2 cpu1_valid=1 cpu1_now=0.6 cpu1_min=0.6 cpu1_max=2.3 state_bytes=104
+[OBD_STATUS] BT=1 ECU=0 SPEED=0 PID31=0 HAS31=0 SUPPORTED31=1 VOLTAGE=0.00 AGE_MS=4294967295 ODO=298958 FRACTION=0.000000
+[OBD_REPLY] cmd=ATRV prompt=1 raw=12.6V||
+[OBD] Adapter initialized; ECU data_ready=0. Keeping live BT link.
+[OBD_REPLY] cmd=0131 prompt=0 raw=SEARCHING...|
+[HOTSPOT] state=0 paused=0 ssid=CivicHUD ip=0.0.0.0 heap=42564
+[MONITOR] uptime_s=62 samples=62 heap_total=231340 free_now=42564 free_min=42516 free_max=124180 free_delta=81664 boot_min=39536 largest=34804 ram_used_pct=81.6 cpu0_valid=1 cpu0_now=0.5 cpu0_min=0.3 cpu0_max=10.2 cpu1_valid=1 cpu1_now=0.6 cpu1_min=0.6 cpu1_max=2.3 state_bytes=104
+[OBD_STATUS] BT=1 ECU=0 SPEED=0 PID31=0 HAS31=0 SUPPORTED31=1 VOLTAGE=12.60 AGE_MS=4294967295 ODO=298958 FRACTION=0.000000
+[OBD_REPLY] cmd=0105 prompt=0 raw=SEARCHING...|
+[OBD_REPLY] cmd=ATRV prompt=1 raw=12.6V||
+[HOTSPOT] state=0 paused=0 ssid=CivicHUD ip=0.0.0.0 heap=42564
+[MONITOR] uptime_s=70 samples=70 heap_total=231340 free_now=42564 free_min=42516 free_max=124180 free_delta=81664 boot_min=39536 largest=34804 ram_used_pct=81.6 cpu0_valid=1 cpu0_now=0.7 cpu0_min=0.3 cpu0_max=10.2 cpu1_valid=1 cpu1_now=0.6 cpu1_min=0.6 cpu1_max=2.3 state_bytes=104
+[OBD_STATUS] BT=1 ECU=0 SPEED=0 PID31=0 HAS31=0 SUPPORTED31=1 VOLTAGE=12.60 AGE_MS=4294967295 ODO=298958 FRACTION=0.000000
+[OBD_REPLY] cmd=010D prompt=0 raw=SEARCHING...|
+[HOTSPOT] state=0 paused=0 ssid=CivicHUD ip=0.0.0.0 heap=42564
+[MONITOR] uptime_s=78 samples=78 heap_total=231340 free_now=42564 free_min=42516 free_max=124180 free_delta=81664 boot_min=39536 largest=34804 ram_used_pct=81.6 cpu0_valid=1 cpu0_now=0.6 cpu0_min=0.3 cpu0_max=10.2 cpu1_valid=1 cpu1_now=0.6 cpu1_min=0.6 cpu1_max=2.3 state_bytes=104
+[OBD_STATUS] BT=1 ECU=0 SPEED=0 PID31=0 HAS31=0 SUPPORTED31=1 VOLTAGE=12.60 AGE_MS=4294967295 ODO=298958 FRACTION=0.000000

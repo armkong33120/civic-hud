@@ -1,0 +1,90 @@
+ets Jul 29 2019 12:21:46
+
+rst:0x1 (POWERON_RESET),boot:0x13 (SPI_FAST_FLASH_BOOT)
+configsip: 0, SPIWP:0xee
+clk_drv:0x00,q_drv:0x00,d_drv:0x00,cs0_drv:0x00,hd_drv:0x00,wp_drv:0x00
+mode:DIO, clock div:1
+load:0x3fff0030,len:4876
+ho 0 tail 12 room 4
+load:0x40078000,len:16560
+load:0x40080400,len:3500
+entry 0x400805b4
+
+[INIT] Starting Civic FC 1.8 Maintenance HUD...
+[WEB] Wi-Fi paused for OBD distance test
+[OBD] Non-blocking FreeRTOS ObdWorker running on Core 0
+[HEAP] ready free=70660 largest=63476 min=70312
+[INIT] Systems ready! Rendering Layout C...
+[CALIBRATED] ODO=298772 saved=1
+[OBD] Connecting to 'OBDII' (PIN: 1234)...
+[OBD] BT SPP link established! Initializing ELM327...
+[OBD_REPLY] cmd=ATZ prompt=1 raw=ELM327 v1.5||
+[OBD_REPLY] cmd=ATE0 prompt=1 raw=ATE0OK||
+[OBD_REPLY] cmd=ATL0 prompt=1 raw=OK||
+[OBD_REPLY] cmd=ATS1 prompt=1 raw=OK||
+[OBD_REPLY] cmd=ATH0 prompt=1 raw=OK||
+[OBD_REPLY] cmd=ATSP0 prompt=1 raw=OK||
+[OBD_STATUS] BT=1 ECU=0 SPEED=0 PID31=0 HAS31=0 SUPPORTED31=1 VOLTAGE=0.00 AGE_MS=4294967295 ODO=298772 FRACTION=0.000000
+[OBD_REPLY] cmd=0100 prompt=1 raw=SEARCHING...|41 00 BE 3F A8 13 ||
+[OBD_REPLY] cmd=010D prompt=1 raw=NO DATA||
+[OBD] ELM/ECU readiness failed; retrying actual initialization.
+[OBD] Connecting to 'OBDII' (PIN: 1234)...
+[OBD] BT SPP link established! Initializing ELM327...
+[OBD_REPLY] cmd=ATZ prompt=1 raw=ELM327 v1.5||
+[OBD_REPLY] cmd=ATE0 prompt=1 raw=ATE0OK||
+[OBD_REPLY] cmd=ATL0 prompt=1 raw=OK||
+[OBD_REPLY] cmd=ATS1 prompt=1 raw=OK||
+[OBD_REPLY] cmd=ATH0 prompt=1 raw=OK||
+[OBD_REPLY] cmd=ATSP0 prompt=1 raw=OK||
+[OBD_REPLY] cmd=0100 prompt=1 raw=SEARCHING...|41 00 BE 3F A8 13 ||
+[OBD_REPLY] cmd=010D prompt=1 raw=NO DATA||
+[OBD] ELM/ECU readiness failed; retrying actual initialization.
+[OBD_STATUS] BT=0 ECU=0 SPEED=0 PID31=0 HAS31=0 SUPPORTED31=1 VOLTAGE=0.00 AGE_MS=4294967295 ODO=298772 FRACTION=0.000000
+[OBD] Connecting to 'OBDII' (PIN: 1234)...
+[OBD] BT SPP link established! Initializing ELM327...
+[OBD_REPLY] cmd=ATZ prompt=1 raw=ELM327 v1.5||
+[OBD_REPLY] cmd=ATE0 prompt=1 raw=ATE0OK||
+[OBD_REPLY] cmd=ATL0 prompt=1 raw=OK||
+[OBD_REPLY] cmd=ATS1 prompt=1 raw=OK||
+[OBD_REPLY] cmd=ATH0 prompt=1 raw=OK||
+[OBD_REPLY] cmd=ATSP0 prompt=1 raw=OK||
+[OBD_REPLY] cmd=0100 prompt=1 raw=SEARCHING...|41 00 BE 3F A8 13 ||
+[OBD_REPLY] cmd=010D prompt=1 raw=NO DATA||
+[OBD] ELM/ECU readiness failed; retrying actual initialization.
+[OBD] Connecting to 'OBDII' (PIN: 1234)...
+[OBD_STATUS] BT=0 ECU=0 SPEED=0 PID31=0 HAS31=0 SUPPORTED31=1 VOLTAGE=0.00 AGE_MS=4294967295 ODO=298772 FRACTION=0.000000
+[OBD] BT SPP link established! Initializing ELM327...
+[OBD_REPLY] cmd=ATZ prompt=1 raw=ELM327 v1.5||
+[OBD_REPLY] cmd=ATE0 prompt=1 raw=ATE0OK||
+[OBD_REPLY] cmd=ATL0 prompt=1 raw=OK||
+[OBD_REPLY] cmd=ATS1 prompt=1 raw=OK||
+[OBD_REPLY] cmd=ATH0 prompt=1 raw=OK||
+[OBD_REPLY] cmd=ATSP0 prompt=1 raw=OK||
+[OBD_REPLY] cmd=0100 prompt=1 raw=SEARCHING...|41 00 BE 3F A8 13 ||
+[OBD_REPLY] cmd=010D prompt=1 raw=NO DATA||
+[OBD] ELM/ECU readiness failed; retrying actual initialization.
+[OBD] Connecting to 'OBDII' (PIN: 1234)...
+[OBD] BT SPP link established! Initializing ELM327...
+[OBD_STATUS] BT=1 ECU=0 SPEED=0 PID31=0 HAS31=0 SUPPORTED31=1 VOLTAGE=0.00 AGE_MS=4294967295 ODO=298772 FRACTION=0.000000
+[OBD_REPLY] cmd=ATZ prompt=1 raw=ELM327 v1.5||
+[OBD_REPLY] cmd=ATE0 prompt=1 raw=ATE0OK||
+[OBD_REPLY] cmd=ATL0 prompt=1 raw=OK||
+[OBD_REPLY] cmd=ATS1 prompt=1 raw=OK||
+[OBD_REPLY] cmd=ATH0 prompt=1 raw=OK||
+[OBD_REPLY] cmd=ATSP0 prompt=1 raw=OK||
+[OBD_REPLY] cmd=0100 prompt=1 raw=SEARCHING...|41 00 BE 3F A8 13 ||
+[OBD_REPLY] cmd=010D prompt=1 raw=NO DATA||
+[OBD] ELM/ECU readiness failed; retrying actual initialization.
+[OBD] Connecting to 'OBDII' (PIN: 1234)...
+[OBD] BT SPP link established! Initializing ELM327...
+[OBD_REPLY] cmd=ATZ prompt=1 raw=ELM327 v1.5||
+[OBD_REPLY] cmd=ATE0 prompt=1 raw=ATE0OK||
+[OBD_REPLY] cmd=ATL0 prompt=1 raw=OK||
+[OBD_REPLY] cmd=ATS1 prompt=1 raw=OK||
+[OBD_REPLY] cmd=ATH0 prompt=1 raw=OK||
+[OBD_REPLY] cmd=ATSP0 prompt=1 raw=OK||
+[OBD_STATUS] BT=1 ECU=0 SPEED=0 PID31=0 HAS31=0 SUPPORTED31=1 VOLTAGE=0.00 AGE_MS=4294967295 ODO=298772 FRACTION=0.000000
+[OBD_REPLY] cmd=0100 prompt=1 raw=SEARCHING...|41 00 BE 3F A8 13 ||
+[OBD_REPLY] cmd=010D prompt=1 raw=NO DATA||
+[OBD] ELM/ECU readiness failed; retrying actual initialization.
+[OBD] Connecting to 'OBDII' (PIN: 1234)...

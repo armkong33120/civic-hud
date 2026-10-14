@@ -1,0 +1,4 @@
+#include "MaintenanceEngine.h"
+#include <cassert>
+#include <iostream>
+int main(){MaintenanceEngine m;auto& v=m.getItems();v.resize(1);auto& i=v[0];i.lastKm=298000;i.intervalKm=10000;i.intervalDays=0;i.warnPct=15;m.evaluate(298000,0);assert(i.status==AlertStatus::OK&&i.usedPct==0&&i.kmLeft==10000);m.evaluate(300000,0);assert(i.status==AlertStatus::OK&&i.usedPct>=19.9&&i.usedPct<=20.1);m.evaluate(306500,0);assert(i.status==AlertStatus::DUE_SOON&&i.usedPct==85);m.evaluate(308000,0);assert(i.status==AlertStatus::OVERDUE&&i.usedPct==100&&i.kmLeft==0);m.evaluate(308001,0);assert(i.status==AlertStatus::OVERDUE&&i.usedPct==100&&i.kmLeft==-1);ServiceHistoryRecord r;assert(m.resetItem(i.id,308001,0,"",r));m.evaluate(308001,0);assert(i.status==AlertStatus::OK&&i.usedPct==0&&i.kmLeft==10000);std::cout<<"Green/amber/red, exact due threshold, overdue and service reset passed\n";}

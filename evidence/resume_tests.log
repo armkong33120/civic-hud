@@ -1,0 +1,437 @@
+======================================================================
+    HONDA CIVIC FC 1.8 MAINTENANCE HUD - MASTER E2E TEST RUNNER
+======================================================================
+Project Root : /Users/arm/Documents/Arduino/civic_hud
+Compiler     : /Library/Developer/CommandLineTools/usr/bin/clang++
+Build Dir    : /tmp/civic_hud_tests
+Timestamp    : 2026-10-13T16:57:30Z
+======================================================================
+
+----------------------------------------------------------------------
+>>> Compiling and Running: ELM327 Protocol & Simulation Suite (F1-F9)
+----------------------------------------------------------------------
+
+======================================================================
+  RUNNING SUITE: ELM327 Simulator & State Machine Suite
+======================================================================
+  ✓ [Tier 1: Feature]     Test_F1_SafeInitializationSequence (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F1_SSP_PIN_ConfigurationIntegrity (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F2_StateTransition_Disconnected_To_Connecting (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F2_StateTransition_Connecting_To_Initializing (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F2_StateTransition_FullHandshake_To_Connected (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F2_UiResponsivenessDuringConnectAttempts (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F3_LinkLossDetected_TransitionsToReconnectWait (0.00 ms)
+        [Info] Auto-reconnect total recovery time: 3250 ms <= 10000 ms
+  ✓ [Tier 1: Feature]     Test_F3_AutoReconnect_Completed_In_Under_10_Seconds (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F4_PairingMismatchRejection (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F4_PairingSuccessWithDefaultPin1234 (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F5_EchoEnabledHandling (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F5_SearchingPrefixTolerated (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F5_QuestionMarkSyntaxErrorIgnoredSafely (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F5_FragmentedSplitPacketAssembly (0.01 ms)
+  ✓ [Tier 1: Feature]     Test_F6_Pid31_BaselineEstablishment (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F6_Pid31_NormalProgressionDeltaKm (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F7_NoDataEngagesSpeedFallbackFlag (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F7_SpeedIntegrationAdvancesOdometer (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F8_EcuDtcClearHandledWithoutLosingKm (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F8_CounterWrap_65535_To_0_AddsExact1Km (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F8_CounterWrap_65530_To_10_AddsExact16Km (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F9_SimulatorBatteryVoltageParsing (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F9_SimulatorCoolantTempDecoding (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Pid31_ZeroKilometers (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Pid31_MaxUint16Boundary (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Pid31_Rollover_Exact_65534_to_1 (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_DtcClear_CounterDropsToZero (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_SpeedFallback_ZeroKph_NoAccumulation (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_SpeedFallback_MaxKph_255 (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_SpeedFallback_FractionalAccumulatorPrecision (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_SingleByteFragmentationStream (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_TrailingWhitespaceAndCarriageReturns (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_MultiplePromptsInSingleRead (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_CorruptNonHexBytesIgnored (0.43 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_CoolantTemperatureNegativeBoundary (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_CoolantTemperatureMaxBoundary (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_RepeatedDisconnectReconnectCycles (0.02 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_ReconnectWaitBackoffDurationBoundary (0.00 ms)
+  ✓ [Tier 3: Combination] Test_Tier3_Echo_Plus_Searching_Plus_SplitPackets_Plus_Pid31 (0.00 ms)
+  ✓ [Tier 3: Combination] Test_Tier3_NoDataFallback_TransitionsToSpeed_ThenDisconnect_ThenResume (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F1_BtMasterModeDeviceString (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F1_HeapPreservationCheck (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F1_ZeroPanicSequentialInitOrder (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F2_ConnectionTimeoutAfterBackoff (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F2_TelemetryStructureFieldDefaults (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F2_DisconnectCountTracking (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F3_SppCallbackCloseEventSimulation (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F3_ReconnectBackoffCountdownTimer (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F3_ReconnectAttemptCounterIncrements (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F4_CustomPin0000Pairing (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F4_CustomTargetNamePairing (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F4_SspAutoAcceptCallbackSimulation (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F5_MixedCaseHexDecoding (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F5_NullCharactersStrippedSafely (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F5_SplitPacketAcrossThreeFragments (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F6_TenSequentialPid31StepsAccumulation (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F6_MultiHourDriveAtConstantSpeedSimulation (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F7_SpeedFallbackEngagesWhenNoDataReturned (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F7_SpeedFallbackDeengagesWhenPid31Resumes (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F8_TwoSequentialCounterWraps (0.01 ms)
+  ✓ [Tier 1: Feature]     Test_F9_SimulatorCommandQueueEmptyCheck (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F9_SimulatorProtocolIso15765CanLock (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Pid31_MinimalNonZeroOneKilometer (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Pid31_MaxMinusOneBoundary (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Pid31_DropFrom65535To65530_DtcClearAtMaxEdge (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Pid31_JumpFromZeroToMax (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Pid31_DeltaZeroKm_StoppedVehicle (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_SpeedFallback_OneKph_MinimumSpeed (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_SpeedFallback_250Kph_AutobahnMax (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_SpeedFallback_DtOneMillisecond (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_SpeedFallback_DtTenSeconds (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_BatteryVoltage_ZeroVoltsDeadBattery (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_BatteryVoltage_18VoltsOvercharge (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_BatteryVoltage_MissingVSuffixHandled (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_BatteryVoltage_WithTextPrefix (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_BufferExtremeLength1024Bytes (0.01 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_PromptAtPositionZero (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_PromptWithLeadingWhitespace (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_CommandQueryTimeoutSimulation (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_CoolantTempZeroCelsiusFreezing (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_CoolantTemp100CelsiusBoiling (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_CoolantTemp120CelsiusOverheat (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_DisconnectDuringAtzHandshake (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_DisconnectDuringAte0Handshake (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_DisconnectDuringAtsp6Handshake (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_DisconnectDuringAtrvHandshake (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_ExactReconnectThresholdAt3000Ms (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_WrapDetectionWindow_60001_to_4999 (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_DtcClearWindow_59999_to_5000 (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_TenCyclesNoResourceLeak (0.01 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_SpeedIntegration_ZeroDtIgnored (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_SpeedIntegration_NegativeDtIgnored (0.00 ms)
+  ✓ [Tier 3: Combination] Test_Tier3_Echo_Plus_NoData_Plus_SpeedFallback_Plus_Voltage (0.00 ms)
+  ✓ [Tier 3: Combination] Test_Tier3_FragmentedPackets_Plus_CounterWrap_Plus_Voltage (0.00 ms)
+  ✓ [Tier 3: Combination] Test_Tier3_DisconnectDuringCounterWrap_ReconnectOdoIntact (0.00 ms)
+  ✓ [Tier 3: Combination] Test_Tier3_RapidIgnitionCycles_ThreeDropsInFifteenSeconds (0.00 ms)
+  ✓ [Tier 3: Combination] Test_Tier3_SplitPacket_Plus_SyntaxError_ThenValidPid31 (0.00 ms)
+  ✓ [Tier 3: Combination] Test_Tier3_HighFrequencySpeedFallback_ToPid31_Handover (0.00 ms)
+  ✓ [Tier 3: Combination] Test_Tier3_MismatchedPin_ThenUpdatedPin_ConnectsSuccessfully (0.00 ms)
+
+----------------------------------------------------------------------
+  SUITE SUMMARY: ELM327 Simulator & State Machine Suite
+  Tier 1 (Feature)     : 45 passed, 0 failed
+  Tier 2 (Boundary)    : 45 passed, 0 failed
+  Tier 3 (Combination) : 9 passed, 0 failed
+  Tier 4 (Real-World)  : 0 passed, 0 failed
+  TOTAL                : 99 passed, 0 failed (Total 99 tests)
+======================================================================
+✅ SUITE PASSED: ELM327 Protocol & Simulation Suite (F1-F9)
+
+----------------------------------------------------------------------
+>>> Compiling and Running: Storage & Web Settings Suite (F10-F16)
+----------------------------------------------------------------------
+
+======================================================================
+  RUNNING SUITE: Storage & Web Settings Suite
+======================================================================
+  ✓ [Tier 1: Feature]     Test_F10_NvsScalar_SaveAndLoadOdometer (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F10_NvsScalar_SaveAndLoadLastPid31 (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F10_NvsScalar_SaveAndLoadBtName (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F10_NvsScalar_SaveAndLoadBtPin (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F10_NvsWearLevelingDirtyIntervalCheck (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F11_PackedItemRecord_ExactStructSize100Bytes (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F11_PackedItemBlob_14ItemsExact1400Bytes (0.01 ms)
+  ✓ [Tier 1: Feature]     Test_F11_PackedItemBlob_RoundtripFieldFidelity (0.01 ms)
+  ✓ [Tier 1: Feature]     Test_F11_ThaiUnicodeAndEmojiPreservedInBlob (0.01 ms)
+  ✓ [Tier 1: Feature]     Test_F11_CustomItemFlagPreservedInBlob (0.01 ms)
+  ✓ [Tier 1: Feature]     Test_F12_LittleFS_CSVAppendServiceRecord (0.02 ms)
+  ✓ [Tier 1: Feature]     Test_F12_LittleFS_CSVMultipleAppendsAndOrder (0.01 ms)
+  ✓ [Tier 1: Feature]     Test_F12_LittleFS_CSVParsingFieldAccuracy (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F12_ThaiDateStringFormattedInCsv (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F12_CsvFileCreationOnFirstWrite (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F13_WebSettings_HtmlRendersOdometerField (0.01 ms)
+  ✓ [Tier 1: Feature]     Test_F13_WebSettings_HtmlRendersBtCredentials (0.01 ms)
+  ✓ [Tier 1: Feature]     Test_F13_WebSettings_HtmlRendersAll14Items (0.01 ms)
+  ✓ [Tier 1: Feature]     Test_F13_WebSettings_HtmlRendersVisibilityCheckboxes (0.01 ms)
+  ✓ [Tier 1: Feature]     Test_F13_WebSettings_HtmlRendersAddItemInputs (0.01 ms)
+  ✓ [Tier 1: Feature]     Test_F14_WebPostSave_OdometerCalibration (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F14_WebPostSave_IntervalModification_10k_to_15k (0.02 ms)
+  ✓ [Tier 1: Feature]     Test_F14_WebPostSave_VisibilityToggle_HidesItem (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F14_WebPostSave_SetsScreenDirtyFlag (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F14_WebPostSave_ReturnsHttp303Redirect (0.01 ms)
+  ✓ [Tier 1: Feature]     Test_F15_WebSettings_HistoryTableRenderedInHtml (0.02 ms)
+  ✓ [Tier 1: Feature]     Test_F15_WebSettings_HistoryTableAllColumnsPresent (0.02 ms)
+  ✓ [Tier 1: Feature]     Test_F15_WebSettings_EmptyHistoryGracefulTable (0.01 ms)
+  ✓ [Tier 1: Feature]     Test_F15_WebSettings_CsvExportEndpointSimulated (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F15_WebSettings_SaveButtonVisualLabel (0.01 ms)
+  ✓ [Tier 1: Feature]     Test_F16_UrlDecoder_DecodesThaiUtf8PercentEncoding (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F16_SerialCommand_WebSaveBridgeExecution (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F16_SimulatedReboot_AllDataRestored (0.02 ms)
+  ✓ [Tier 1: Feature]     Test_F16_SingleSaveAll_UpdatesBothMemoryAndNvs (0.01 ms)
+  ✓ [Tier 1: Feature]     Test_F16_AddItemViaWeb_PersistsToNvsBlob (0.01 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Nvs_ZeroOdometerValue (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Nvs_MaxOdometerValue_4000000 (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Nvs_EmptyBtNameFallsBackToDefault (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Nvs_EmptyBtPinFallsBackToDefault (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Nvs_MissingKeyReturnsCustomDefault (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Nvs_CorruptedBlobLengthRejected (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_PackedItem_MaxNameLength47Chars (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_MaxCapacity_24ItemsInBlob_Exact2400Bytes (0.01 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_ItemAdditionBeyond24_RejectedSafely (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_ZeroDistanceInterval_ForTimeOnlyItem (0.02 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_ZeroTimeInterval_ForDistanceOnlyItem (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Csv_EmptyFileReadReturnsZeroRecords (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Csv_OneHundredEntriesStress (0.11 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Csv_MalformedLineWithMissingColumnsIgnored (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Csv_NonNumericColumnsIgnored (0.07 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Html_EscapingSpecialChars (0.01 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_WebPostSave_ZeroOdoIgnored (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_WebPostSave_NegativeOdoIgnored (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_WebPostSave_EmptyBodyNoCrash (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_WebPostSave_UnknownItemIdsIgnored (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_WebPostSave_CorruptedUrlEncodingHandledSafely (0.03 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_WebPostSave_MultipleItemsModifiedSimultaneously (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_WebSettings_HistoryTableRendersFiftyEntries (0.08 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_FiveConsecutiveRebootsPersistence (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_EmptyLittleFsPartitionHandledGracefully (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_UrlDecoder_MixedThreeAndFourByteUtf8 (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_LongFormPayload_4Kilobytes (0.02 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_AddItem_NameEmptyIgnored (0.02 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_AddItem_KmZeroIgnored (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_AddItem_ReachesMax24ItemsCap (0.03 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_CsvFileRemoveOperation (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_HistoryEntryDeltaComputationPrecision (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_HistoryEntryNextDueComputation (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_NvsClearWipesAllData (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_LittleFsClearWipesAllFiles (0.00 ms)
+  ✓ [Tier 3: Combination] Test_Tier3_WebIntervalChange_Plus_OdoUpdate_Plus_Reboot (0.01 ms)
+  ✓ [Tier 3: Combination] Test_Tier3_AddCustomItem_Plus_HideDefaultItem_Plus_Reboot (0.01 ms)
+  ✓ [Tier 3: Combination] Test_Tier3_ServiceResetUpdatesHistory_WebSettingsReflectsNewRow (0.01 ms)
+  ✓ [Tier 3: Combination] Test_Tier3_NvsBlob_Plus_LittleFsHistory_PowerLossSimulation (0.01 ms)
+  ✓ [Tier 3: Combination] Test_Tier3_WebBtCredentialsUpdate_PersistedToNvs_LoadedByObdTask (0.00 ms)
+  ✓ [Tier 3: Combination] Test_Tier3_AllItemsHiddenExceptOne_BlobValid_UnhideAllRestored (0.01 ms)
+  ✓ [Tier 3: Combination] Test_Tier3_CustomItemAdded_IntervalModified_SurvivesReboot (0.01 ms)
+
+----------------------------------------------------------------------
+  SUITE SUMMARY: Storage & Web Settings Suite
+  Tier 1 (Feature)     : 35 passed, 0 failed
+  Tier 2 (Boundary)    : 35 passed, 0 failed
+  Tier 3 (Combination) : 7 passed, 0 failed
+  Tier 4 (Real-World)  : 0 passed, 0 failed
+  TOTAL                : 77 passed, 0 failed (Total 77 tests)
+======================================================================
+✅ SUITE PASSED: Storage & Web Settings Suite (F10-F16)
+
+----------------------------------------------------------------------
+>>> Compiling and Running: Thai Typography & Layout C Engine Suite (F17-F27)
+----------------------------------------------------------------------
+
+======================================================================
+  RUNNING SUITE: Thai Typography & Layout C UI Engine Suite
+======================================================================
+  ✓ [Tier 1: Feature]     Test_F17_ThaiGlyphClassification_BaseConsonant (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F17_ThaiGlyphClassification_BelowVowel (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F17_ThaiGlyphClassification_AboveVowel (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F17_ThaiGlyphClassification_ToneMark (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F17_ZeroHeapAllocationBitmapFontTableSimulation (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F18_NoFloatingVowel_BelowVowelAdvanceZero (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F18_NoFloatingVowel_AboveVowelAdvanceZero (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F18_ToneMarkStacksAboveUpperVowel_Tier3 (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F18_ToneMarkStacksAtTier2_WhenNoUpperVowel (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F18_AscenderConsonant_ToneMarkShiftsLeft (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F19_TopLeftCornerCalibration_0_0 (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F19_BottomRightCornerCalibration_239_319 (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F19_CenterDisplayCalibration_120_160 (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F19_HorizontalSwipeYieldsIncreasingTx (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F19_CoordinatesClampedWithin240x320 (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F20_StatusBarGeometry_240x28 (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F20_StatusBar_ObdConnectedPillText (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F20_StatusBar_ObdDisconnectedPillText (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F20_StatusBar_VoltageFormat_14_2V (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F20_StatusBar_OdometerRightAlignedFormat (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F21_StatusCategorization_Overdue (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F21_StatusCategorization_DueSoon (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F21_StatusCategorization_OK (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F21_UrgencySorting_OverduePrecedesDueSoonAndOk (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F21_RGB565_ColorCodesMatchApprovedPalette (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F22_FourteenItems_YieldsExactlyThreePages (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F22_PageZero_ContainsTopFiveItems (0.01 ms)
+  ✓ [Tier 1: Feature]     Test_F22_PageOne_ContainsItemsFiveToNine (0.01 ms)
+  ✓ [Tier 1: Feature]     Test_F22_PageTwo_ContainsRemainingFourItems (0.05 ms)
+  ✓ [Tier 1: Feature]     Test_F22_BottomNavigationTouchZones (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F23_TouchLockedWhenSpeedOverFiveKph (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F23_TouchUnlockedWhenParked (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F23_SpeedThresholdExactFiveKphBoundary (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F23_SpeedOverFiveForcesPageZero (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F23_ModalBlockedWhileDriving (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F24_ModalDimensions_224x290 (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F24_ModalPreviousServiceFields (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F24_ModalNewRecordPreviewFields (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F24_ModalCloseButtonTouchCoordinates (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F24_ModalSectionHeadersThaiEmojiLabels (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F25_FormattedDateString_13Oct26 (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F25_LiteralTodayStringForbidden (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F25_MonthAbbreviationLookupAccuracy (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F25_DateStringLengthFitIn24Bytes (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F25_RelativeDaysAgoCalculation (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F26_SliderProgressAtZeroPercent (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F26_SliderProgressAtMidwayFiftyPercent (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F26_SliderThresholdConfirmedAt85Percent (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F26_SliderReleasedUnder85PercentSnapsBack (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F26_ConfirmedResetSinksItemToBottom (0.01 ms)
+  ✓ [Tier 1: Feature]     Test_F27_CardSpriteMemoryFootprintExact21888Bytes (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F27_SpriteMemoryHeadroomAbove240Kilobytes (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F27_SpiTransferTimeUnderThreeMilliseconds (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F27_SpriteFlickerEliminationByAtomicPush (0.00 ms)
+  ✓ [Tier 1: Feature]     Test_F27_TotalCardViewportStep52Pixels (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Thai_ConsecutiveUpperVowels (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Thai_ToneMarkOnAscenderConsonant_F (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Thai_ToneMarkOnAscenderConsonant_Fa (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Thai_EmptyStringComposition (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Thai_AsciiOnlyStringAdvance (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Touch_ExactMinRawValues (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Touch_ExactMaxRawValues (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Touch_NegativeRawValuesClamped (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Touch_ExcessiveRawValuesClamped (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Slider_TouchLeftOfTrackClampedToZero (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Slider_TouchRightOfTrackClampedToOneHundred (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Slider_Exact84PercentBoundaryNotConfirmed (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Slider_Exact85PercentBoundaryConfirmed (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Pagination_SingleItem_YieldsOnePage (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Pagination_ExactFiveItems_YieldsOnePage (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Pagination_SixItems_YieldsTwoPages (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Pagination_TenItems_YieldsTwoPages (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Pagination_FifteenItems_YieldsThreePages (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Pagination_MaxTwentyFourItems_YieldsFivePages (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Urgency_NegativeKmRemainingRatio (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Urgency_ExactZeroRemainingRatio_DueSoon (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Urgency_ExactWarnThresholdBoundary (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Urgency_JustAboveWarnThresholdBoundary_OK (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_ProgressBar_UsedPctClampedAt100 (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_ProgressBar_UsedPctClampedAtZero (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_DrivingLockout_SpeedFiveKphUnlocked (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_DrivingLockout_SpeedSixKphLocked (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_DrivingLockout_MaxSpeed255Locked (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Modal_CancelButtonTouchRegionBoundaries (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_Modal_OutsideCancelButtonTouchIgnored (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_ThaiDate_LeapYearFormattedString (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_ThaiDate_NewYearBoundary (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_ThaiDate_YearEndBoundary (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_CardTouchTargetYCoordinates_CardZero (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_CardTouchTargetYCoordinates_CardFour (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_CardTouchTargetGapBetweenCardsIgnored (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_DualConstraint_TimeLimitsBeforeDistance (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_DualConstraint_DistanceLimitsBeforeTime (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_CardVisibilityFilterRemovesHidden (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_AllItemsVisiblePreserved (0.02 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_ZeroVisibleItemsHandledSafely (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_SpritePushMemoryAddressAlignment (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_TrackWidthBoundaries_18_to_222 (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_ThumbDiameterExact32Pixels (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_AudioConfirmationFrequency_1200_to_1500_Hz (0.00 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_LedFlashDurationExact300Ms (0.00 ms)
+  ✓ [Tier 3: Combination] Test_Tier3_ThaiCompositor_Plus_LayoutC_CardFormatting (0.01 ms)
+  ✓ [Tier 3: Combination] Test_Tier3_TouchAxisSwap_Plus_CardTapModalActivation (0.00 ms)
+  ✓ [Tier 3: Combination] Test_Tier3_TouchAxisSwap_Plus_SlideConfirmReset (0.00 ms)
+  ✓ [Tier 3: Combination] Test_Tier3_DrivingLockout_Plus_PaginationNavigation (0.00 ms)
+  ✓ [Tier 3: Combination] Test_Tier3_ModalPreviousService_Plus_NewRecordCalculation (0.00 ms)
+  ✓ [Tier 3: Combination] Test_Tier3_SlideConfirmReset_Plus_HistoryLogging_Plus_ListReordering (0.00 ms)
+  ✓ [Tier 3: Combination] Test_Tier3_FourteenItems_PaginationPagesAndReachability (0.01 ms)
+  ✓ [Tier 3: Combination] Test_Tier3_HiddenItemsUpdate_ReflectsInPagination (0.01 ms)
+  ✓ [Tier 3: Combination] Test_Tier3_CustomItemAdded_SortedByUrgencyAmongDefaults (0.01 ms)
+  ✓ [Tier 3: Combination] Test_Tier3_OverdueItemPinnedAt100_DueSoonCalculatesRealUsage (0.00 ms)
+  ✓ [Tier 3: Combination] Test_Tier3_CardSpriteBufferMemoryReusability (0.00 ms)
+
+----------------------------------------------------------------------
+  SUITE SUMMARY: Thai Typography & Layout C UI Engine Suite
+  Tier 1 (Feature)     : 55 passed, 0 failed
+  Tier 2 (Boundary)    : 46 passed, 0 failed
+  Tier 3 (Combination) : 11 passed, 0 failed
+  Tier 4 (Real-World)  : 0 passed, 0 failed
+  TOTAL                : 112 passed, 0 failed (Total 112 tests)
+======================================================================
+✅ SUITE PASSED: Thai Typography & Layout C Engine Suite (F17-F27)
+
+----------------------------------------------------------------------
+>>> Compiling and Running: Integration & Real-World Scenarios Suite (Tier 4)
+----------------------------------------------------------------------
+
+======================================================================
+  RUNNING SUITE: Integration & Real-World Scenarios Suite
+======================================================================
+  ✓ [Tier 4: Real-World]  Test_Tier4_Scenario1_HighwayCommute_SmoothOdoAdvance (0.21 ms)
+  ✓ [Tier 4: Real-World]  Test_Tier4_Scenario1_HighwayCommute_CountdownDecrements (0.16 ms)
+  ✓ [Tier 4: Real-World]  Test_Tier4_Scenario1_HighwayCommute_StatusBarUpdates (0.07 ms)
+  ✓ [Tier 4: Real-World]  Test_Tier4_Scenario1_HighwayCommute_ZeroPanics (0.16 ms)
+  ✓ [Tier 4: Real-World]  Test_Tier4_Scenario2_Tunnel_SignalLoss_SpeedFallbackEngaged (0.07 ms)
+  ✓ [Tier 4: Real-World]  Test_Tier4_Scenario2_Tunnel_DongleReappears_ReconnectUnder10Seconds (0.06 ms)
+  ✓ [Tier 4: Real-World]  Test_Tier4_Scenario2_Tunnel_CloneQuirksHandledOnReconnect (0.06 ms)
+  ✓ [Tier 4: Real-World]  Test_Tier4_Scenario2_Tunnel_NoUIHitchOrOdometerGlitch (0.06 ms)
+  ✓ [Tier 4: Real-World]  Test_Tier4_Scenario3_OilServiceReset_ModalHistoryInspection (0.06 ms)
+  ✓ [Tier 4: Real-World]  Test_Tier4_Scenario3_OilServiceReset_SlideConfirmThreshold85Pct (0.07 ms)
+  ✓ [Tier 4: Real-World]  Test_Tier4_Scenario3_OilServiceReset_LittleFsCsvHistoryLogged (0.06 ms)
+  ✓ [Tier 4: Real-World]  Test_Tier4_Scenario3_OilServiceReset_CardReorderedToBottom (0.06 ms)
+  ✓ [Tier 4: Real-World]  Test_Tier4_Scenario4_WebSettings_ModifyIntervalAndHideItems (0.06 ms)
+  ✓ [Tier 4: Real-World]  Test_Tier4_Scenario4_WebSettings_AddNewCustomItem (0.06 ms)
+  ✓ [Tier 4: Real-World]  Test_Tier4_Scenario4_WebSettings_SaveAllAtomicTransaction (0.08 ms)
+  ✓ [Tier 4: Real-World]  Test_Tier4_Scenario4_WebSettings_ScreenRefreshedImmediately (0.08 ms)
+  ✓ [Tier 4: Real-World]  Test_Tier4_Scenario4_WebSettings_RebootPersistenceRoundtrip (0.14 ms)
+  ✓ [Tier 4: Real-World]  Test_Tier4_Scenario5_EcuReset_ClearCodesZeroPID31 (0.06 ms)
+  ✓ [Tier 4: Real-World]  Test_Tier4_Scenario5_EcuReset_BaseOdometerPreservedWithoutLoss (0.06 ms)
+  ✓ [Tier 4: Real-World]  Test_Tier4_Scenario5_EcuReset_NextPID31AdvancesSmoothly (0.06 ms)
+  ✓ [Tier 4: Real-World]  Test_Tier4_Scenario6_MultiHourCommute_WithNvsPersistenceCadence (0.10 ms)
+  ✓ [Tier 4: Real-World]  Test_Tier4_Scenario7_WebOdoSync_LiveOdometerReanchor (0.06 ms)
+  ✓ [Tier 4: Real-World]  Test_Tier4_Scenario8_MultiWrap_Continuous131070KmDriving (0.06 ms)
+  ✓ [Tier 4: Real-World]  Test_Tier4_Scenario9_PowerLoss_NvsCrcValidationAndSafeRecovery (0.09 ms)
+  ✓ [Tier 4: Real-World]  Test_Tier4_Scenario10_FullThaiDisplay_UrgencyReorderUnderDynamicSpeed (0.06 ms)
+  ✓ [Tier 4: Real-World]  Test_Tier4_Stress_RapidConsecutiveServiceResets (0.07 ms)
+  ✓ [Tier 4: Real-World]  Test_Tier4_Stress_TripOdometerResetAndAccumulation (0.06 ms)
+  ✓ [Tier 4: Real-World]  Test_Tier4_Stress_MaxOdometerClampingSafety (0.06 ms)
+  ✓ [Tier 4: Real-World]  Test_Tier4_Stress_ZeroSpeedIntegrationProducesNoDelta (0.09 ms)
+  ✓ [Tier 4: Real-World]  Test_Tier4_Stress_All14ItemsSimultaneousUrgencyEvaluation (0.06 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_System_SpeedAtZeroKphNoMovement (0.06 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_System_SpeedAtFiveKphTouchStillUnlocked (0.06 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_System_SpeedAtSixKphTouchLocked (0.06 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_System_SliderDragAt84PctNotConfirmed (0.06 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_System_SliderDragAt85PctConfirmed (0.06 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_System_SingleKmDriveTick (0.06 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_System_ExactFiveKmIntervalNvsWrite (0.06 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_System_ZeroIntervalItemHandling (0.06 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_System_MaximumItemsLimit24 (0.07 ms)
+  ✓ [Tier 2: Boundary]    Test_Tier2_System_EmptyHistoryCsvInitialization (0.00 ms)
+
+----------------------------------------------------------------------
+  SUITE SUMMARY: Integration & Real-World Scenarios Suite
+  Tier 1 (Feature)     : 0 passed, 0 failed
+  Tier 2 (Boundary)    : 10 passed, 0 failed
+  Tier 3 (Combination) : 0 passed, 0 failed
+  Tier 4 (Real-World)  : 30 passed, 0 failed
+  TOTAL                : 40 passed, 0 failed (Total 40 tests)
+======================================================================
+✅ SUITE PASSED: Integration & Real-World Scenarios Suite (Tier 4)
+
+----------------------------------------------------------------------
+>>> Compiling and Running: Challenger 2 Empirical BT State Machine & Speed Precision Suite
+----------------------------------------------------------------------
+
+======================================================================
+  RUNNING SUITE: Challenger 2 Empirical Verification: BT State Machine & Speed Precision
+======================================================================
+  ✓ [Tier 1: Feature]     Test_Challenger_BT_RapidConnectDisconnectCycling_50Cycles (0.04 ms)
+  ✓ [Tier 2: Boundary]    Test_Challenger_BT_ReconnectTimeUnder10Seconds_AllLossModes (0.00 ms)
+      [Empirical UI Latency Metric: Max = 0.00 ms, Total UI Loops = 100]
+  ✓ [Tier 3: Combination] Test_Challenger_BT_UIThreadNeverBlockedOver100Ms_RealTimeMultiThreaded (608.08 ms)
+  ✓ [Tier 1: Feature]     Test_Challenger_SpeedPrecision_HighwayCommute_100kSamples (1.15 ms)
+  ✓ [Tier 2: Boundary]    Test_Challenger_SpeedPrecision_MicroCrawl_200kSamples_SubKmFloatingPoint (1.95 ms)
+  ✓ [Tier 3: Combination] Test_Challenger_SpeedPrecision_StochasticCycle_500kSamples_JitteredDt (5.66 ms)
+  ✓ [Tier 4: Real-World]  Test_Challenger_SpeedPrecision_MultiMillionSample_Endurance_ZeroDrift (22.10 ms)
+  ✗ [Tier 2: Boundary]    Test_Challenger_SpeedPrecision_AdversarialBoundaries_ZeroAndNegatives FAILED!
+      --> /Users/arm/Documents/Arduino/civic_hud/tests/test_challenger_bt_speed.cpp:629 - Assertion failed: odo.getCurrentOdo() (100000) == 100001 (100001)
+
+----------------------------------------------------------------------
+  SUITE SUMMARY: Challenger 2 Empirical Verification: BT State Machine & Speed Precision
+  Tier 1 (Feature)     : 2 passed, 0 failed
+  Tier 2 (Boundary)    : 2 passed, 1 failed
+  Tier 3 (Combination) : 2 passed, 0 failed
+  Tier 4 (Real-World)  : 1 passed, 0 failed
+  TOTAL                : 7 passed, 1 failed (Total 8 tests)
+======================================================================
+❌ TEST EXECUTION FAILED: Challenger 2 Empirical BT State Machine & Speed Precision Suite
