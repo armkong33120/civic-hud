@@ -11,8 +11,20 @@
       "errors": 0
     },
     {
+      "suite": "com.civichud.maintenance.identity.AccountConfigurationTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0
+    },
+    {
       "suite": "com.civichud.maintenance.data.TrackerValidationTest",
       "tests": 9,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "suite": "com.civichud.maintenance.data.ProfileFeedbackTest",
+      "tests": 7,
       "failures": 0,
       "errors": 0
     },
@@ -35,7 +47,7 @@
       "errors": 0
     }
   ],
-  "totalUnitTests": 55,
+  "totalUnitTests": 68,
   "A": true,
   "B": true,
   "gapAddedKm": 0.0,
@@ -50,5 +62,18 @@
   "actualCarTested": false,
   "gpsFixObtained": false,
   "cloudImplemented": false,
-  "sourceApkSha256": "19264189e82ed3d16c37fc0bacd27f1ce31ac4fe91bb8d5b150219b004386b6e"
+  "sourceApkSha256": "19264189e82ed3d16c37fc0bacd27f1ce31ac4fe91bb8d5b150219b004386b6e",
+  "version": "0.2.0",
+  "legacyDeviceScenariosVersion": "0.1.0",
+  "upgradeDeviceScenarios": {
+    "normalDistanceAndCountdown": true,
+    "dropoutZeroDistance": true,
+    "firstResumeZeroGap": true,
+    "backgroundHomeIdleContinues": true,
+    "disconnectState": "RECONNECT_WAIT",
+    "actualVehicleUnchanged": true,
+    "liveOAuthTested": false,
+    "actualCarTested": false
+  },
+  "liveAuthOperational": false
 }

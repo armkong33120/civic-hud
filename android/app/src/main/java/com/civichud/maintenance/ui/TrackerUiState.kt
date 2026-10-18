@@ -6,6 +6,10 @@ data class PairedObdDevice(val name: String, val address: String)
 data class CapturedLocation(val latitude: Double, val longitude: Double, val address: String)
 
 data class TrackerUiState(
+    val account: com.civichud.maintenance.identity.AccountUiState = com.civichud.maintenance.identity.AccountUiState(),
+    val themeMode: String = "system",
+    val reduceMotion: Boolean = false,
+    val feedback: List<FeedbackEntry> = emptyList(),
     val vehicle: Vehicle? = null,
     val rules: List<MaintenanceResult> = emptyList(),
     val history: List<ServiceLog> = emptyList(),
@@ -30,4 +34,13 @@ data class TrackerActions(
     val onLogService: (Long, ServiceDraft) -> Unit,
     val onCaptureLocation: () -> Unit,
     val onClearMessage: () -> Unit,
+    val onSaveProfile: (VehicleProfileDraft) -> Unit,
+    val onAppearance: (String, Boolean) -> Unit,
+    val onFeedback: (FeedbackDraft) -> Unit,
+    val onDeleteFeedback: (Long) -> Unit,
+    val onLogin: () -> Unit,
+    val onLinkAccount: () -> Unit,
+    val onSignOut: () -> Unit,
+    val onDeleteAccount: () -> Unit,
+
 )

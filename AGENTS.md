@@ -9,7 +9,7 @@ Read `AI_HANDOFF.md`, `docs/CURRENT_STATE.md`, `docs/DECISIONS.md`, then the rel
 - ESP32 only: PID 01 31 is distance since DTC clearing; preserve its checkpoint logic. Android immutable rule: PID010D speed integration only,3second cutoff,no ECU-distance counter.
 - The user stopped the engine and asked not to run extra OBD scanning/connection tests. Get fresh context before any device action. Publishing this repository did not authorize flashing or changing hardware.
 - Inspect available serial ports. Do not hardcode the old port. Opening serial can cause a board reset; never keep serial open during flashing.
-- Azure CLI inspection is complete (Students enabled); no resources/auth/sync implemented. Current Android phase explicitly excludes cloud provisioning/auth/sync. Do not spend credits while documenting/testing offline features.
+- Azure CLI inspection is complete (Students enabled); no cloud resources/live auth/sync implemented. Current owner authorized configurable auth-client preparation and setup documentation only; live provider registration/backend/cloud sync remain absent. Do not spend credits while documenting/testing offline features.
 - Keep UI simple and Thai-friendly. No decorative service icons. Follow approved bar progression and day/night behavior.
 - Test relevant changed behavior, not every historical suite indiscriminately. Do not claim old simulated tests demonstrate live Bluetooth or hardware correctness.
 - Never commit account tokens, environment secrets, firmware flash/NVS backups, private contact records or location logs.

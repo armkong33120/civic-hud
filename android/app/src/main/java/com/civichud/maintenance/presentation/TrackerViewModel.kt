@@ -21,12 +21,13 @@ class TrackerViewModel(application:Application):AndroidViewModel(application) {
  private val devices=MutableStateFlow<List<PairedObdDevice>>(emptyList())
  private val gpsBusy=MutableStateFlow(false)
  private val gpsLocation=MutableStateFlow<CapturedLocation?>(null)
- private data class Stored(val source:com.civichud.maintenance.data.TrackerStore,val vehicle:Vehicle?,val rules:List<MaintenanceRule>,val history:List<ServiceLog>)
- private val stored=graph.store.flatMapLatest { store -> combine(store.vehicle,store.rules,store.history){v,r,h->Stored(store,v,r,h)} }
- private val extra=combine(devices,graph.message,gpsBusy,gpsLocation){d,m,b,l->TrackerUiState(devices=d,message=m,gpsBusy=b,gpsLocation=l)}
+ private data class Stored(val source:com.civichud.maintenance.data.TrackerStore,val vehicle:Vehicle?,val rules:List<MaintenanceRule>,val history:List<ServiceLog>,val feedback:List<FeedbackEntry>)
+ private val stored=graph.store.flatMapLatest { store -> combine(store.vehicle,store.rules,store.history,store.feedback){v,r,h,f->Stored(store,v,r,h,f)} }
+ private val basic=combine(devices,graph.message,gpsBusy,gpsLocation){d,m,b,l->TrackerUiState(devices=d,message=m,gpsBusy=b,gpsLocation=l)}
+ private val extra=combine(basic,graph.appearance.state,graph.account.state){s,a,c->s.copy(themeMode=a.themeMode,reduceMotion=a.reduceMotion,account=c)}
  val state=combine(stored,graph.session.telemetry,graph.simulation,extra){s,t,sim,extras->
   val liveVehicle=if(s.source!==graph.session.currentStore)null else if(!graph.session.initialized)s.vehicle else s.vehicle?.copy(accumulatedKm=t.accumulatedKm)
-  extras.copy(vehicle=liveVehicle,rules=s.rules.map {MaintenanceCalculator.evaluate(it,liveVehicle?.estimatedOdometerKm?:0.0,LocalDate.now())},history=s.history,telemetry=t,simulation=sim)
+  extras.copy(vehicle=liveVehicle,rules=s.rules.map {MaintenanceCalculator.evaluate(it,liveVehicle?.estimatedOdometerKm?:0.0,LocalDate.now())},history=s.history,feedback=s.feedback,telemetry=t,simulation=sim)
  }.stateIn(viewModelScope,SharingStarted.WhileSubscribed(5000),TrackerUiState())
  private fun act(block:suspend ()->Unit){viewModelScope.launch {try{graph.ready.await();block()}catch(e:Exception){if(e is CancellationException)throw e;graph.message.value=e.message?:"ทำรายการไม่สำเร็จ"}}}
  fun refreshDevices(){act {devices.value=PairedDeviceRepository(getApplication()).list();if(devices.value.isEmpty())graph.message.value="ยังไม่มีอุปกรณ์ที่จับคู่ ให้จับคู่ OBD2 ใน Bluetooth ของมือถือก่อน"}}
@@ -43,5 +44,11 @@ class TrackerViewModel(application:Application):AndroidViewModel(application) {
   graph.session.logService(id,draft);graph.message.value="บันทึกการเปลี่ยนถ่ายแล้ว"
  }}
  fun captureLocation(){act {gpsLocation.value=null;gpsBusy.value=true;try{gpsLocation.value=LocationCapture(getApplication()).capture()}finally{gpsBusy.value=false}}}
+ fun saveProfile(draft:VehicleProfileDraft){act {graph.store.value.saveVehicleProfile(draft);graph.message.value="บันทึกข้อมูลรถแล้ว"}}
+ fun saveAppearance(theme:String,reduced:Boolean){act {graph.appearance.save(theme,reduced)}}
+ fun feedback(draft:FeedbackDraft){act {graph.store.value.enqueueFeedback(draft);graph.message.value="บันทึกข้อเสนอแนะในเครื่องแล้ว ยังไม่ได้ส่งถึงทีมงาน"}}
+ fun deleteFeedback(id:Long){act {graph.store.value.deleteFeedback(id)}}
+ fun signOut(){graph.account.signOut()}
+ fun deleteAccount(){act {graph.account.requestDeletion();graph.message.value="ระบบรับคำขอลบบัญชีแล้ว"}}
  fun clearMessage(){graph.message.value=""}
 }

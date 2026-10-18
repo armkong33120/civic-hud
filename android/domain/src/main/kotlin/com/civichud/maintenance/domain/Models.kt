@@ -10,9 +10,44 @@ data class Vehicle(
     val calibratedAt: Long,
     val isCalibrated: Boolean,
     val adapterAddress: String,
+    val manufacturer: String = "",
+    val model: String = "",
+    val modelYear: Int? = null,
+    val registration: String = "",
+    val fuelType: String = "",
 ) {
     val estimatedOdometerKm: Double get() = baseOdometerKm + accumulatedKm
 }
+
+data class VehicleProfileDraft(
+    val name: String,
+    val manufacturer: String = "",
+    val model: String = "",
+    val modelYear: Int? = null,
+    val registration: String = "",
+    val fuelType: String = "",
+)
+
+data class FeedbackDraft(
+    val category: String,
+    val title: String,
+    val message: String,
+    val replyEmail: String = "",
+    val includeDiagnostics: Boolean = false,
+)
+
+data class FeedbackEntry(
+    val id: Long,
+    val syncId: String,
+    val category: String,
+    val title: String,
+    val message: String,
+    val replyEmail: String,
+    val includeDiagnostics: Boolean,
+    val createdAt: Long,
+    val status: String,
+    val receiptId: String = "",
+)
 
 data class MaintenanceRule(
     val id: Long,

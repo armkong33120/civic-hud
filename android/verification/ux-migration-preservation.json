@@ -1,0 +1,11 @@
+{
+  "schemaBefore": 1,
+  "schemaAfter": 2,
+  "actualVehicleOriginalColumnsUnchanged": {
+    "android_metadata": true,
+    "vehicles": true,
+    "maintenance_rules": true,
+    "service_logs": true,
+    "notification_reservations": true
+  }
+}

@@ -1,3 +1,7 @@
+## Android0.2.0 update
+
+Editable vehicle profiles, modern Compose motion/themes, local feedback outbox and configurable account-client preparation are under [android](android/README.md). [Upgrade report](android/docs/UX_UPGRADE_REPORT.md) and [account setup](android/docs/AUTH_SETUP.md) separate verified offline/device behavior from unconfigured live providers/backend.68 unit tests pass; no live cloud-auth or actual-car validation is claimed.
+
 ## Android MVP — 18 October 2026
 
 The native Android tracker is now implemented and S22 simulation-tested. Start at [android/README.md](android/README.md) and [morning car-test guide](android/MORNING_TEST_GUIDE.md). All55unit tests and A–E device simulation checks pass. Actual car/adapter and outdoorGPSfix validation are pending. Cloud/login are not built. Historical Android-as-proposal statements below are superseded by this update. Public repository exports source and aggregate test evidence only; raw phone databases, UI screenshots and logs remain local.

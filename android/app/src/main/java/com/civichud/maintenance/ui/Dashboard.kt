@@ -4,7 +4,14 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.Composable
+import androidx.compose.animation.*
+import androidx.compose.animation.core.*
+import androidx.compose.foundation.background
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -39,18 +46,21 @@ internal fun Dashboard(
     onAddRule: () -> Unit, onEditRule: (MaintenanceRule) -> Unit,
     onDeleteRule: (MaintenanceRule) -> Unit, onService: (MaintenanceRule) -> Unit,
 ) {
+    val reduced = LocalReducedMotion.current
     LazyColumn(Modifier.fillMaxSize().testTag("dashboard_list"), verticalArrangement = Arrangement.spacedBy(12.dp), contentPadding = PaddingValues(bottom = 20.dp)) {
         item {
-            Card(Modifier.fillMaxWidth(), colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer)) {
-                Column(Modifier.padding(18.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+            Card(Modifier.fillMaxWidth(), colors = CardDefaults.cardColors(containerColor = Color(0xFF123E32), contentColor = Color.White)) {
+                Column(Modifier.background(Brush.linearGradient(listOf(Color(0xFF123E32), Color(0xFF205847)))).padding(22.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                    Text(state.vehicle?.let { listOf(it.manufacturer,it.model,it.modelYear?.toString().orEmpty()).filter(String::isNotBlank).joinToString(" · ").ifBlank { it.name } } ?: "รถของฉัน", style = MaterialTheme.typography.labelLarge, color=Color(0xFFB7D7CA))
                     Text("เลขไมล์ประมาณ", style = MaterialTheme.typography.titleMedium)
-                    Text(state.vehicle?.let { number(it.estimatedOdometerKm) } ?: "—",
-                        style = MaterialTheme.typography.displayMedium, modifier = Modifier.testTag("estimated_odometer"))
+                    AnimatedContent(targetState=state.vehicle?.let { number(it.estimatedOdometerKm) } ?: "—", transitionSpec={ fadeIn(tween(if(reduced) 0 else 180)) togetherWith fadeOut(tween(if(reduced) 0 else 120)) }, label="odometer") { value ->
+                        Text(value, style=MaterialTheme.typography.displayMedium, fontWeight=FontWeight.Bold, modifier=Modifier.testTag("estimated_odometer"))
+                    }
                     Text("กิโลเมตร · ${if (state.vehicle?.isCalibrated == true) "ปรับเทียบแล้ว" else "ยังไม่ได้ปรับเทียบ"}", modifier = Modifier.testTag("calibration_status"))
                     if (state.vehicle?.isCalibrated != true) {
                         Text("กรุณากรอกเลขไมล์จากหน้าปัดรถก่อนใช้แผนดูแลรถ", style = MaterialTheme.typography.bodyMedium)
                     }
-                    TextButton(onClick = onCalibrate, modifier = Modifier.testTag("calibrate_odometer")) { Text("ปรับเทียบเลขไมล์จริง") }
+                    OutlinedButton(onClick = onCalibrate, colors=ButtonDefaults.outlinedButtonColors(contentColor=Color.White), modifier = Modifier.testTag("calibrate_odometer")) { Text("ปรับเทียบเลขไมล์จริง") }
                 }
             }
         }
@@ -73,6 +83,11 @@ internal fun Dashboard(
             }
         }
         item {
+            val due = state.rules.count { it.status == MaintenanceStatus.OVERDUE }
+            val soon = state.rules.count { it.status == MaintenanceStatus.APPROACHING }
+            if(state.vehicle?.isCalibrated == true) Surface(color=MaterialTheme.colorScheme.surfaceVariant, shape=RoundedCornerShape(16.dp)) {
+                Text("${state.rules.size} รายการดูแล  ·  ถึงกำหนด $due  ·  ใกล้ถึงกำหนด $soon", Modifier.fillMaxWidth().padding(14.dp), style=MaterialTheme.typography.labelLarge)
+            }
             Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.SpaceBetween) {
                 Text("แผนดูแลรถ", style = MaterialTheme.typography.titleLarge)
                 TextButton(onClick = onAddRule, enabled = state.vehicle?.isCalibrated == true, modifier = Modifier.testTag("add_rule")) { Text("เพิ่มรายการ") }
@@ -102,6 +117,8 @@ private fun MaintenanceCard(result: MaintenanceResult, calibrated: Boolean, onEd
         MaintenanceStatus.APPROACHING -> if (dark) Color(0xFFFFD275) else WarningAmber
         MaintenanceStatus.OVERDUE -> if (dark) Color(0xFFFFA7AA) else DangerRed
     }
+    val animatedColor by animateColorAsState(color, tween(if(LocalReducedMotion.current) 0 else 240), label="maintenance-color")
+    val progress by animateFloatAsState(result.usedFraction.toFloat().coerceIn(0f,1f), tween(if(LocalReducedMotion.current) 0 else 280), label="maintenance-progress")
     val status = when (result.status) {
         MaintenanceStatus.NORMAL -> "ปกติ"
         MaintenanceStatus.APPROACHING -> "ใกล้ถึงกำหนด"
@@ -113,7 +130,7 @@ private fun MaintenanceCard(result: MaintenanceResult, calibrated: Boolean, onEd
             Text(rule.name, style = MaterialTheme.typography.titleLarge)
             Text(if (calibrated) status else "รอปรับเทียบเลขไมล์", color = if (calibrated) color else MaterialTheme.colorScheme.onSurfaceVariant,
                 modifier = Modifier.semantics { contentDescription = "Maintenance status ${rule.id}: ${if (calibrated) status else "Await calibration"}" })
-            LinearProgressIndicator(progress = { result.usedFraction.toFloat().coerceIn(0f, 1f) }, modifier = Modifier.fillMaxWidth().height(8.dp), color = color)
+            LinearProgressIndicator(progress = { progress }, modifier = Modifier.fillMaxWidth().height(10.dp), color = animatedColor)
             result.remainingKm?.let { remaining -> Text(if (remaining >= 0) "เหลือ ${number(remaining)} กม." else "เกิน ${number(abs(remaining))} กม.") }
             result.remainingDays?.let { remaining -> Text(if (remaining >= 0) "เหลือ $remaining วัน" else "เกิน ${abs(remaining)} วัน") }
             Text(buildList {

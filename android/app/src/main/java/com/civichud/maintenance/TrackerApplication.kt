@@ -26,6 +26,8 @@ class AppGraph(private val context:Context) {
  val session=TrackingSession(store.value)
  val simulationTransport=SimulationObdTransport()
  val notifier=MaintenanceNotifier(context)
+ val account=com.civichud.maintenance.identity.AccountClient(context)
+ val appearance=com.civichud.maintenance.platform.AppearancePreferences(context)
  val message=MutableStateFlow("")
  var serviceRunning=false
  val ready=scope.async { session.prepare(store.value) }

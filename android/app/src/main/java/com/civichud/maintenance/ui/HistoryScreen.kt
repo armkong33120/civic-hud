@@ -4,7 +4,11 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.core.tween
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
@@ -27,12 +31,16 @@ internal fun HistoryScreen(history: List<ServiceLog>) {
             }
         }
         items(history.sortedByDescending { it.performedAt }, key = { it.id }) { entry ->
+            var expanded by remember(entry.id) { mutableStateOf(false) }
             Card(Modifier.fillMaxWidth().testTag("history_${entry.id}")) {
                 Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
                     Text(entry.itemName, style = MaterialTheme.typography.titleLarge)
                     Text(DateTimeFormatter.ofPattern("dd MMM yyyy HH:mm", Locale.forLanguageTag("th-TH"))
                         .format(Instant.ofEpochMilli(entry.performedAt).atZone(ZoneId.systemDefault())), style = MaterialTheme.typography.bodySmall)
                     Text("เลขไมล์ประมาณ ${number(entry.odometerKm)} กม.", style = MaterialTheme.typography.titleMedium)
+                    TextButton(onClick={expanded=!expanded},modifier=Modifier.testTag("history_details_${entry.id}")){Text(if(expanded) "ย่อรายละเอียด" else "ดูรายละเอียดบริการ")}
+                    AnimatedVisibility(expanded,enter=fadeIn(tween(if(LocalReducedMotion.current) 0 else 180)),exit=fadeOut(tween(if(LocalReducedMotion.current) 0 else 120))) {
+                    Column(verticalArrangement=Arrangement.spacedBy(6.dp)) {
                     Metadata("สถานที่", entry.locationText)
                     if (entry.latitude != null && entry.longitude != null) {
                         Text("GPS: ${number(entry.latitude!!, 6)}, ${number(entry.longitude!!, 6)}", style = MaterialTheme.typography.bodySmall)
@@ -41,6 +49,8 @@ internal fun HistoryScreen(history: List<ServiceLog>) {
                     Metadata("เบอร์ติดต่อ", entry.phone)
                     Metadata("ค่าใช้จ่าย", entry.cost?.let { "${number(it, 2)} บาท" } ?: "")
                     Metadata("หมายเหตุ", entry.notes)
+                    }
+                    }
                 }
             }
         }

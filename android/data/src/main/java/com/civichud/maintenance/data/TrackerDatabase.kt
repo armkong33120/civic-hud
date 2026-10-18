@@ -18,8 +18,8 @@ internal class TrackerConverters {
 
 @Database(
     entities = [VehicleEntity::class, RuleEntity::class, ServiceLogEntity::class,
-        NotificationReservationEntity::class],
-    version = 1,
+        NotificationReservationEntity::class, FeedbackEntity::class],
+    version = 2,
     exportSchema = false,
 )
 @TypeConverters(TrackerConverters::class)
@@ -34,7 +34,8 @@ internal abstract class TrackerDatabase : RoomDatabase() {
             val filename = if (simulation) "vehicle_tracker_simulation.db" else "vehicle_tracker.db"
             val key = appContext.getDatabasePath(filename).absolutePath
             instances.getOrPut(key) {
-                Room.databaseBuilder(appContext, TrackerDatabase::class.java, filename).build()
+                Room.databaseBuilder(appContext, TrackerDatabase::class.java, filename)
+                    .addMigrations(MIGRATION_1_2).build()
             }
         }
     }

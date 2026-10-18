@@ -1,6 +1,7 @@
 package com.civichud.maintenance.ui
 
-import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.animation.*
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -17,8 +18,6 @@ import com.civichud.maintenance.domain.*
 
 @Composable
 fun TrackerScreen(state: TrackerUiState, actions: TrackerActions) {
-    val systemDark = isSystemInDarkTheme()
-    var dark by rememberSaveable { mutableStateOf(systemDark) }
     var tab by rememberSaveable { mutableStateOf(0) }
     var showDevices by remember { mutableStateOf(false) }
     var showCalibration by remember { mutableStateOf(false) }
@@ -33,7 +32,7 @@ fun TrackerScreen(state: TrackerUiState, actions: TrackerActions) {
             actions.onClearMessage()
         }
     }
-    TrackerTheme(dark) {
+    TrackerTheme(state.themeMode, state.reduceMotion) {
         Scaffold(
             modifier = Modifier.automationRoot(),
             snackbarHost = { SnackbarHost(snackbars, Modifier.testTag("runtime_message")) },
@@ -41,7 +40,8 @@ fun TrackerScreen(state: TrackerUiState, actions: TrackerActions) {
                 NavigationBar {
                     listOf("หน้าหลัก", "ประวัติ", "ตั้งค่า").forEachIndexed { i, label ->
                         NavigationBarItem(selected = tab == i, onClick = { tab = i },
-                            icon = { Text(listOf("◉", "≡", "⚙")[i]) }, label = { Text(label) },
+                            colors=NavigationBarItemDefaults.colors(selectedIconColor=MaterialTheme.colorScheme.primary,selectedTextColor=MaterialTheme.colorScheme.onSurface,indicatorColor=MaterialTheme.colorScheme.primaryContainer,unselectedIconColor=MaterialTheme.colorScheme.onSurfaceVariant,unselectedTextColor=MaterialTheme.colorScheme.onSurfaceVariant),
+                            icon = { NavigationGlyph(i) }, label = { Text(label) },
                             modifier = Modifier.testTag(listOf("tab_dashboard", "tab_history", "tab_settings")[i]))
                     }
                 }
@@ -53,31 +53,19 @@ fun TrackerScreen(state: TrackerUiState, actions: TrackerActions) {
                         Text("ดูแลรถ", style = MaterialTheme.typography.headlineSmall)
                         Text(state.vehicle?.name?.takeIf { it.isNotBlank() } ?: "Smart Vehicle Tracker", style = MaterialTheme.typography.bodySmall)
                     }
-                    TextButton(onClick = { dark = !dark }, modifier = Modifier.testTag("toggle_theme")
-                        .semantics { contentDescription = "Toggle day night theme" }) {
-                        Text(if (dark) "โหมดกลางวัน" else "โหมดกลางคืน")
-                    }
+                    AssistChip(onClick={tab=2},label={Text(if(state.simulation) "ทดสอบ" else "รถของฉัน")},modifier=Modifier.testTag("vehicle_settings"))
                 }
-                when (tab) {
+                AnimatedContent(targetState=tab, transitionSpec={
+                    fadeIn(tween(if(state.reduceMotion) 0 else 180)) togetherWith fadeOut(tween(if(state.reduceMotion) 0 else 120))
+                },label="navigation") { selectedTab ->
+                when (selectedTab) {
                     0 -> Dashboard(state, onDevices = { showDevices = true; actions.onRefreshDevices() },
                         onCalibrate = { showCalibration = true }, onStop = actions.onStop,
                         onAddRule = { addRule = true }, onEditRule = { ruleEditor = it },
                         onDeleteRule = { deleteRule = it }, onService = { serviceRule = it })
                     1 -> HistoryScreen(state.history)
-                    else -> Column(Modifier.verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                        Text("การเชื่อมต่อและค่ารถ", style = MaterialTheme.typography.titleLarge)
-                        Text("แหล่งข้อมูล: ${if (state.simulation) "ข้อมูลจำลอง · ฐานข้อมูลแยก" else "OBD-II Bluetooth"}")
-                        Button(onClick = { showDevices = true; actions.onRefreshDevices() }, modifier = Modifier.fillMaxWidth().testTag("settings_connect")) { Text("เลือกอะแดปเตอร์ Bluetooth") }
-                        OutlinedButton(onClick = { showCalibration = true }, modifier = Modifier.fillMaxWidth().testTag("settings_calibrate")) { Text("ปรับเทียบเลขไมล์จริง") }
-                        OutlinedButton(onClick = actions.onStop, modifier = Modifier.fillMaxWidth().testTag("settings_stop")) { Text("หยุดติดตาม") }
-                        if (BuildConfig.DEBUG) {
-                            OutlinedButton(onClick = actions.onStartSimulation, modifier = Modifier.fillMaxWidth().testTag("start_simulation")) { Text("เริ่มโหมดจำลอง (ทดสอบ)") }
-                            Text("ข้อมูลจำลองเก็บแยกจากรถจริง ใช้ตรวจสอบหน้าจอและการแจ้งเตือน", style = MaterialTheme.typography.bodySmall)
-                        }
-                        Text("เลขไมล์ประมาณคำนวณจากความเร็วที่อ่านได้ขณะติดตาม โปรดปรับเทียบกับหน้าปัดรถก่อนใช้งาน และตรวจสอบเป็นระยะ", style = MaterialTheme.typography.bodyMedium)
-                        Text("รายการใหม่เริ่มนับจากเลขไมล์และวันที่ตั้งค่า เป็นจุดเริ่มต้นการติดตาม ไม่ใช่ประวัติการเข้ารับบริการ", style = MaterialTheme.typography.bodyMedium)
-                        Spacer(Modifier.height(16.dp))
-                    }
+                    else -> SettingsScreen(state,actions,{showDevices=true;actions.onRefreshDevices()},{showCalibration=true})
+                }
                 }
             }
         }

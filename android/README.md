@@ -1,6 +1,6 @@
 # Smart Vehicle Maintenance Tracker / CivicHUD Android
 
-Native Android MVP for Honda Civic FC 1.8 (2017) maintenance tracking, built against API36 and tested on Samsung SM-S901E Android16. All core features work offline. Cloud auth/sync is deliberately not implemented in this phase.
+Native Android maintenance tracker with editable vehicle make/model/year, built against API36 and tested on Samsung SM-S901E Android16. All core tracking features work offline. Version0.2.0 adds modern Compose motion, persisted appearance preferences, custom vehicle profiles, local feedback outbox, and configurable browser OIDC client preparation. External provider registrations/backend are absent; live login, linking, deletion and cloud sync are not yet operational. Read docs/AUTH_SETUP.md before enabling account configuration.
 
 ## Build
 
@@ -19,7 +19,9 @@ Debug APK: app/build/outputs/apk/debug/app-debug.apk. Release output is unsigned
 - `app/service/obd`: BluetoothSocket SPP transport, prompt-framed ELM327 protocol, bounded initialization/reads, reconnect backoff and connectedDevice foreground service.
 - `app/service/TrackingSession`: serialized live odometer/calibration/service operations; checkpoint at0.5km/60seconds or state changes. UI state can update without SQLite writes per frame.
 - `app/presentation`: state aggregation and user actions. `app/ui`: Compose state and callbacks only; no Bluetooth/DAO/parser calls.
-- `app/platform`: paired-device listing and optional GPS-on-tap.
+- `app/platform`: paired-device listing, optional GPS-on-tap and appearance preferences.
+- `app/identity`: AppAuth code+PKCE, HTTPS account API client, canonical account state; no persisted tokens or fake auth fallback.
+- Settings: editable vehicle profile without mileage reset; feedback persisted PENDING until an actual receipt. Android sharing does not count as server delivery.
 - `app/service`: notification channels, cycle/status dedup and periodic12-hour date check.
 
 The Android path uses speed integration only. It does not reuse the old ESP32 ECU-distance-counter implementation. The lifetime odometer shown is an estimate: user dashboard calibration + observed travel. A gap is marked and not extrapolated.

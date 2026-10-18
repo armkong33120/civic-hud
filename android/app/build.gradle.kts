@@ -1,13 +1,21 @@
 plugins { id("com.android.application"); kotlin("android"); id("org.jetbrains.kotlin.plugin.compose") }
 android {
  namespace="com.civichud.maintenance"; compileSdk=36
- defaultConfig { applicationId="com.civichud.maintenance"; minSdk=26; targetSdk=36; versionCode=1; versionName="0.1.0" }
+ defaultConfig { applicationId="com.civichud.maintenance"; minSdk=26; targetSdk=36; versionCode=2; versionName="0.2.0" }
+ defaultConfig {
+  manifestPlaceholders["appAuthRedirectScheme"] = "com.civichud.maintenance"
+  listOf("AUTH_DISCOVERY_URL", "AUTH_CLIENT_ID", "AUTH_SCOPE", "ACCOUNT_API_URL").forEach { key ->
+   val value = providers.gradleProperty(key).orNull.orEmpty()
+   buildConfigField("String", key, "\"" + value.replace("\\", "\\\\").replace("\"", "\\\"") + "\"")
+  }
+ }
  buildFeatures { compose=true; buildConfig=true }
  compileOptions { sourceCompatibility=JavaVersion.VERSION_17; targetCompatibility=JavaVersion.VERSION_17 }
  buildTypes { release { isMinifyEnabled=false } }
 }
 kotlin { jvmToolchain(17) }
 dependencies {
+ implementation("net.openid:appauth:0.11.1")
  implementation(project(":domain")); implementation(project(":data"))
  implementation(platform("androidx.compose:compose-bom:2025.10.01"))
  implementation("androidx.compose.material3:material3")

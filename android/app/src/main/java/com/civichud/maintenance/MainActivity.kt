@@ -8,6 +8,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.lifecycle.lifecycleScope
+import kotlinx.coroutines.launch
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.civichud.maintenance.presentation.TrackerViewModel
 import com.civichud.maintenance.ui.*
@@ -20,6 +22,14 @@ class MainActivity:ComponentActivity() {
   else (application as TrackerApplication).graph.message.value="ต้องอนุญาต Bluetooth เพื่อเชื่อม OBD2"
   pendingBluetooth=null
  }
+ private val accountResult=registerForActivityResult(ActivityResultContracts.StartActivityForResult()){ result ->
+  lifecycleScope.launch {try{(application as TrackerApplication).graph.account.completeAuthorization(result.data)}catch(e:Exception){(application as TrackerApplication).graph.message.value=e.message?:"เข้าสู่ระบบไม่สำเร็จ"}}
+ }
+ private fun openAccount(link:Boolean=false){lifecycleScope.launch {
+  val graph=(application as TrackerApplication).graph
+  try{if(link)startActivity(android.content.Intent(android.content.Intent.ACTION_VIEW,graph.account.linkingUri()))else accountResult.launch(graph.account.authorizationIntent())}
+  catch(e:Exception){graph.message.value=e.message?:"เปิดระบบบัญชีไม่สำเร็จ"}
+ }}
  private val notificationPermission=registerForActivityResult(ActivityResultContracts.RequestPermission()) {}
  private val locationPermission=registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()){grants->
   if(grants.values.any{it})model.captureLocation() else (application as TrackerApplication).graph.message.value="ไม่อนุญาตตำแหน่ง กรอกสถานที่เองได้"
@@ -42,7 +52,10 @@ class MainActivity:ComponentActivity() {
     onCaptureLocation={
      if(checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION)==android.content.pm.PackageManager.PERMISSION_GRANTED)model.captureLocation()
      else locationPermission.launch(arrayOf(Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION))
-    },onClearMessage=model::clearMessage
+    },onClearMessage=model::clearMessage,
+    onSaveProfile=model::saveProfile,onAppearance=model::saveAppearance,onFeedback=model::feedback,
+    onDeleteFeedback=model::deleteFeedback,onLogin={openAccount()},onLinkAccount={openAccount(true)},
+    onSignOut=model::signOut,onDeleteAccount=model::deleteAccount
    ))
   }
  }

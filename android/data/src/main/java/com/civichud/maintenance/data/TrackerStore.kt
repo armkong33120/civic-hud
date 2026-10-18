@@ -7,6 +7,9 @@ import com.civichud.maintenance.domain.MaintenanceStatus
 import com.civichud.maintenance.domain.ServiceDraft
 import com.civichud.maintenance.domain.ServiceLog
 import com.civichud.maintenance.domain.Vehicle
+import com.civichud.maintenance.domain.VehicleProfileDraft
+import com.civichud.maintenance.domain.FeedbackDraft
+import com.civichud.maintenance.domain.FeedbackEntry
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
@@ -21,6 +24,7 @@ class TrackerStore(context: Context, val simulation: Boolean = false) {
     val vehicle: Flow<Vehicle?> = dao.observeVehicle().map { it?.toDomain() }
     val rules: Flow<List<MaintenanceRule>> = dao.observeRules().map { rows -> rows.map { it.toDomain() } }
     val history: Flow<List<ServiceLog>> = dao.observeHistory().map { rows -> rows.map { it.toDomain() } }
+    val feedback: Flow<List<FeedbackEntry>> = dao.observeFeedback().map { rows -> rows.map { it.toDomain() } }
 
     suspend fun initialize() {
         db.withTransaction {
@@ -29,7 +33,7 @@ class TrackerStore(context: Context, val simulation: Boolean = false) {
             val today = localDate(now)
             dao.insertVehicle(
                 VehicleEntity(
-                    name = "Honda Civic FC 1.8 2017", baseOdometerKm = 0.0,
+                    name = "รถของฉัน", baseOdometerKm = 0.0,
                     accumulatedKm = 0.0, calibratedAt = 0, isCalibrated = false,
                     adapterAddress = "", updatedAt = now,
                 ),
@@ -83,6 +87,51 @@ class TrackerStore(context: Context, val simulation: Boolean = false) {
             dao.updateVehicle(current.copy(adapterAddress = address.trim(),
                 updatedAt = System.currentTimeMillis(), isDirty = true))
         }
+    }
+
+    suspend fun saveVehicleProfile(draft: VehicleProfileDraft) {
+        validateVehicleProfile(draft)
+        initialize()
+        db.withTransaction {
+            val current = requireVehicle()
+            dao.updateVehicle(updatedVehicleProfile(current, draft, System.currentTimeMillis()))
+        }
+    }
+
+    /** Durable local outbox only. Consent records intent; this method collects no diagnostics. */
+    suspend fun enqueueFeedback(draft: FeedbackDraft): Long {
+        validateFeedbackDraft(draft)
+        initialize()
+        return db.withTransaction {
+            val now = System.currentTimeMillis()
+            dao.insertFeedback(FeedbackEntity(category = draft.category.trim(),
+                title = draft.title.trim(), message = draft.message.trim(),
+                replyEmail = draft.replyEmail.trim(), includeDiagnostics = draft.includeDiagnostics,
+                createdAt = now, updatedAt = now))
+        }
+    }
+
+    suspend fun pendingFeedback(): List<FeedbackEntry> {
+        initialize()
+        return dao.pendingFeedback().map { it.toDomain() }
+    }
+
+    /** Call only after an acknowledged server response; never treat a local enqueue as received. */
+    suspend fun markFeedbackSent(id: Long, receiptId: String) {
+        require(id > 0) { "Invalid feedback item" }
+        require(receiptId.isNotBlank()) { "A server receipt is required before marking feedback sent" }
+        initialize()
+        db.withTransaction {
+            val existing = requireNotNull(dao.feedback(id)) { "Feedback item no longer exists" }
+            val updated = acknowledgedFeedback(existing, receiptId, System.currentTimeMillis())
+            if (updated != existing) dao.updateFeedback(updated)
+        }
+    }
+
+    suspend fun deleteFeedback(id: Long) {
+        require(id > 0) { "Invalid feedback item" }
+        initialize()
+        db.withTransaction { dao.deleteFeedback(id) }
     }
 
     suspend fun saveRule(rule: MaintenanceRule) {
@@ -174,6 +223,37 @@ internal fun updatedRuleSettings(existing: RuleEntity, submitted: MaintenanceRul
     existing.copy(name = submitted.name.trim(), intervalKm = submitted.intervalKm,
         intervalMonths = submitted.intervalMonths, warningKm = submitted.warningKm,
         warningDays = submitted.warningDays, updatedAt = now, isDirty = true)
+
+internal fun updatedVehicleProfile(existing: VehicleEntity, draft: VehicleProfileDraft, now: Long): VehicleEntity =
+    existing.copy(name = draft.name.trim(), manufacturer = draft.manufacturer.trim(),
+        model = draft.model.trim(), modelYear = draft.modelYear,
+        registration = draft.registration.trim(), fuelType = draft.fuelType.trim(),
+        updatedAt = now, isDirty = true)
+
+internal fun acknowledgedFeedback(existing: FeedbackEntity, receiptId: String, now: Long): FeedbackEntity {
+    val receipt = receiptId.trim()
+    require(receipt.isNotEmpty()) { "A server receipt is required before marking feedback sent" }
+    if (existing.status == "SENT") {
+        require(existing.receiptId == receipt) { "Feedback already has a different receipt" }
+        return existing
+    }
+    return existing.copy(status = "SENT", receiptId = receipt, updatedAt = now, isDirty = true)
+}
+
+internal fun validateVehicleProfile(draft: VehicleProfileDraft) {
+    require(draft.name.isNotBlank() && draft.name.trim().length <= 120) { "Vehicle name must contain 1–120 characters" }
+    require(draft.manufacturer.trim().length <= 80 && draft.model.trim().length <= 80) { "Manufacturer and model must be at most 80 characters" }
+    require(draft.registration.trim().length <= 40 && draft.fuelType.trim().length <= 40) { "Registration and fuel type must be at most 40 characters" }
+    draft.modelYear?.let { require(it in 1886..(LocalDate.now().year + 2)) { "Invalid vehicle model year" } }
+}
+
+internal fun validateFeedbackDraft(draft: FeedbackDraft) {
+    require(draft.category.isNotBlank() && draft.category.trim().length <= 80) { "Choose a feedback category" }
+    require(draft.title.isNotBlank() && draft.title.trim().length <= 160) { "Feedback title must contain 1–160 characters" }
+    require(draft.message.isNotBlank() && draft.message.trim().length <= 10_000) { "Feedback message must contain 1–10000 characters" }
+    val email = draft.replyEmail.trim()
+    require(email.isEmpty() || (email.length <= 254 && Regex("^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$").matches(email))) { "Invalid reply email" }
+}
 
 internal fun requireDistance(value: Double, label: String) {
     require(value.isFinite() && value >= 0.0) { "$label must be finite and nonnegative" }

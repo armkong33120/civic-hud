@@ -1,0 +1,10 @@
+{
+  "normalDistanceAndCountdown": true,
+  "dropoutZeroDistance": true,
+  "firstResumeZeroGap": true,
+  "backgroundHomeIdleContinues": true,
+  "disconnectState": "RECONNECT_WAIT",
+  "actualVehicleUnchanged": true,
+  "liveOAuthTested": false,
+  "actualCarTested": false
+}
