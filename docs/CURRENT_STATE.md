@@ -1,3 +1,7 @@
+## LuckRot0.3.1 — Android branding update
+
+The Android app is now named **LuckRot**, with an original cartoon mechanic mascot (folded arms, wrench). The shared icon is used for adaptive launcher, native splash and account welcome; dashboard label also updated. Keep internal application ID com.civichud.maintenance to preserve upgrades/data and prepared OAuth callback. Relevant app13 tests/builds/S22 branding checks pass, actual mileage/history unchanged. Install ONLY with adb install --user 0 -r; the user95 Samsung Dual App copy was removed and must remain absent. Source artwork/prompts:android/brand/README.md. Provider/backend activation remains pending. See android/CHANGELOG.md.
+
 ## Android0.3.0 — launch/account entry update
 
 Branded native vector splash now leads to login/signup choice for unauthenticated users. Google/LINE/Facebook/email remain pending activation; explicit offline entry opens the existing dashboard without fake login.68 unit tests and S22 entry-flow checks pass; mileage/history preserved. See `android/CHANGELOG.md` and `android/docs/RELEASE_PROCESS.md`. Every delivered update must include version/changelog and verified GitHub push/tag.

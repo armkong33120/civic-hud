@@ -14,6 +14,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.foundation.Image
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.semantics.semantics
@@ -46,9 +48,9 @@ private fun AccountWelcome(state:TrackerUiState,actions:TrackerActions,onOffline
         Column(Modifier.fillMaxSize().padding(padding).verticalScroll(rememberScrollState()).padding(horizontal=28.dp,vertical=20.dp).testTag("account_welcome"),
             verticalArrangement=Arrangement.spacedBy(12.dp)) {
             Row(verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(14.dp)) {
-                Icon(painterResource(R.drawable.ic_tracker_mark),contentDescription="โลโก้ดูแลรถ",tint=androidx.compose.ui.graphics.Color.Unspecified,modifier=Modifier.size(56.dp).testTag("brand_logo"))
+                Image(painterResource(R.drawable.luckrot_mascot),contentDescription=stringResource(R.string.app_logo_description),modifier=Modifier.size(56.dp).testTag("brand_logo"))
                 Column {
-                    Text("ดูแลรถ",style=MaterialTheme.typography.headlineMedium)
+                    Text(stringResource(R.string.app_name),style=MaterialTheme.typography.headlineMedium)
                     Text("ทุกระยะทาง มีแผนดูแล",style=MaterialTheme.typography.bodySmall,color=MaterialTheme.colorScheme.primary)
                 }
             }

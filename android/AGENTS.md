@@ -9,3 +9,5 @@ Preserve actual mileage, calibration and service history. Android uses PID010D s
 Provider registrations/account backend/cloud sync are not live. Keep pending provider methods honest and offline entry usable. UI consumes repository state only. Do not embed client secrets or publish raw phone databases, screenshots, logs, private contacts/GPS, PIN or local config. Curated aggregate verification summaries may be published.
 
 Use relevant tests and physical-device checks for changed behavior. Do not use a power/lock key during ADB work. Keep screen awake as authorized.
+
+Current brand is LuckRot. Keep internal application ID com.civichud.maintenance to preserve upgrades/data and prepared callback config. Source mascot/prompts:brand/README.md. Always install using adb install --user 0 -r; verify the removed user95 Dual App copy stays uninstalled.

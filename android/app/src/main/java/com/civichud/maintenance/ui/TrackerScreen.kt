@@ -13,6 +13,8 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.stringResource
+import com.civichud.maintenance.R
 import com.civichud.maintenance.BuildConfig
 import com.civichud.maintenance.domain.*
 
@@ -50,7 +52,7 @@ fun TrackerScreen(state: TrackerUiState, actions: TrackerActions) {
             Column(Modifier.fillMaxSize().padding(padding).padding(horizontal = 16.dp)) {
                 Row(Modifier.fillMaxWidth().padding(vertical = 12.dp), horizontalArrangement = Arrangement.SpaceBetween) {
                     Column(Modifier.weight(1f)) {
-                        Text("ดูแลรถ", style = MaterialTheme.typography.headlineSmall)
+                        Text(stringResource(R.string.app_name), style = MaterialTheme.typography.headlineSmall)
                         Text(state.vehicle?.name?.takeIf { it.isNotBlank() } ?: "Smart Vehicle Tracker", style = MaterialTheme.typography.bodySmall)
                     }
                     AssistChip(onClick={tab=2},label={Text(if(state.simulation) "ทดสอบ" else "รถของฉัน")},modifier=Modifier.testTag("vehicle_settings"))

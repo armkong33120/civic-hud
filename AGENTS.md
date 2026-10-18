@@ -1,3 +1,5 @@
+Current Android brand is LuckRot. Preserve internal application ID and data. All S22 installs MUST use adb install --user 0 -r and confirm user95 remains uninstalled; do not recreate the removed Dual App copy.
+
 Owner requires every delivered Android update to bump versionCode/versionName, update android/CHANGELOG.md and publish verified source/docs plus a version tag to GitHub. Follow android/docs/RELEASE_PROCESS.md.
 
 # Working instructions for the next AI

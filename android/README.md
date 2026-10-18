@@ -1,8 +1,10 @@
-## Current version:0.3.0
+## Current version:0.3.1 — LuckRot
+
+LuckRot now uses the cartoon mechanic mascot across its launcher, native splash and account welcome. Source artwork and prompts are in [brand/](brand/README.md).
 
 Launch now shows a branded native splash and an unauthenticated login/signup welcome screen, with explicit offline entry. Google/LINE/Facebook/email remain marked pending activation; no live provider registration/backend was added. See [CHANGELOG](CHANGELOG.md), [release policy](docs/RELEASE_PROCESS.md), and the [account setup guide](docs/AUTH_SETUP.md).
 
-# Smart Vehicle Maintenance Tracker / CivicHUD Android
+# LuckRot — Smart Vehicle Maintenance Tracker
 
 Native Android maintenance tracker with editable vehicle make/model/year, built against API36 and tested on Samsung SM-S901E Android16. All core tracking features work offline. Version0.2.0 adds modern Compose motion, persisted appearance preferences, custom vehicle profiles, local feedback outbox, and configurable browser OIDC client preparation. External provider registrations/backend are absent; live login, linking, deletion and cloud sync are not yet operational. Read docs/AUTH_SETUP.md before enabling account configuration.
 

@@ -11,7 +11,7 @@
  <uses-permission android:name="android.permission.FOREGROUND_SERVICE_CONNECTED_DEVICE"/>
  <uses-permission android:name="android.permission.WAKE_LOCK"/>
  <uses-feature android:name="android.hardware.bluetooth" android:required="false"/>
- <application android:name=".TrackerApplication" android:label="ดูแลรถ · CivicHUD" android:theme="@style/Theme.Tracker" android:icon="@drawable/ic_tracker_mark" android:usesCleartextTraffic="false" android:allowBackup="false" android:supportsRtl="true">
+ <application android:name=".TrackerApplication" android:label="@string/app_name" android:theme="@style/Theme.Tracker" android:icon="@mipmap/ic_launcher" android:roundIcon="@mipmap/ic_launcher" android:usesCleartextTraffic="false" android:allowBackup="false" android:supportsRtl="true">
   <activity android:name=".MainActivity" android:exported="true"><intent-filter><action android:name="android.intent.action.MAIN"/><category android:name="android.intent.category.LAUNCHER"/></intent-filter></activity>
   <service android:name=".service.obd.ObdTrackingForegroundService" android:exported="false" android:foregroundServiceType="connectedDevice"/>
  </application>

@@ -1,0 +1,19 @@
+{
+  "version": "0.3.1",
+  "versionCode": 4,
+  "device": "SM-S901E",
+  "welcomeAndDashboardLuckRotName": true,
+  "mascotDescriptionAndResourcePresent": true,
+  "launcherIconVisuallyReviewed": true,
+  "appInfoLuckRotLabelVerified": true,
+  "signupAndOfflineEntryWork": true,
+  "coldLaunchSucceeds": true,
+  "mainProfileInstalled": true,
+  "dualAppProfileUninstalled": true,
+  "actualMileageAndHistoryUnchanged": true,
+  "liveOAuthTested": false,
+  "appUnitTests": 13,
+  "appUnitFailures": 0,
+  "debugBuild": true,
+  "unsignedReleaseBuild": true
+}

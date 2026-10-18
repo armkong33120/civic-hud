@@ -1,0 +1,5 @@
+<resources>
+ <string name="app_name">LuckRot</string>
+ <string name="app_logo_description">โลโก้ LuckRot ช่างซ่อมรถกอดอกถือประแจ</string>
+ <color name="luckrot_brand">#123E32</color>
+</resources>

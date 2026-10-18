@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.3.1 — 2026-10-18 (versionCode 4)
+
+### Changed
+- Rename the user-facing app to **LuckRot**, including launcher/app-info label, login/signup brand heading, dashboard heading and accessible logo description.
+- Replace the road/check mark with an original cartoon mechanic holding a wrench with folded arms. Preserve a full standing mascot source and a compact icon rendition for readability; share the exported mascot across adaptive launcher icon, native splash and welcome screen.
+- Keep only a512px runtime export in the APK; high-resolution PNG masters and generation prompts live under brand/ for future edits.
+- Preserve application ID, Room databases, account callback URI and all OBD behavior. Install only with `adb install --user 0 -r` to avoid recreating the Samsung Dual App duplicate.
+
+### Validation / limits
+- Relevant app tests13 pass; debug/unsigned release build pass. Unchanged domain/data test baseline remains55 passing tests from0.3.0/0.2.0.
+- Physical S22 checks cover LuckRot name/logo in welcome/app-info, signup/offline dashboard, version0.3.1, preserved actual mileage/history and main-profile-only installation.
+- Account providers/backend remain pending configuration as before. This is a branding preview update, not a cloud-login release.
+
 ## 0.3.0 — 2026-10-18 (versionCode 3)
 
 ### Changed
