@@ -1,3 +1,7 @@
+## Implementation update — 18 October 2026
+
+The offline Android MVP is implemented under `android/`. This document is historical phase2/cloud planning, not the current code contract. See `../android/README.md` and `../android/MORNING_TEST_GUIDE.md`. Current distance source is speed010Donly; cloud/login remain excluded.
+
 # Android product/system design — draft, not implemented
 
 ## 1. Requirements

@@ -1,3 +1,7 @@
+## Android update — 18 October 2026
+
+See `../android/README.md` for the implemented Android MVP and physical S22 simulation results. This page below records the historical ESP32 snapshot. Android cloud/auth remain unimplemented; car testing remains pending.
+
 # สถานะปัจจุบันที่ใช้ส่งต่อ — 14 ตุลาคม 2026
 
 ## Hardware

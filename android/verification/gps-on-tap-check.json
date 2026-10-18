@@ -1,0 +1,8 @@
+{
+  "manualInputRetained": true,
+  "gpsFixReceived": false,
+  "requestFinishedOrTimedOut": true,
+  "coordinatesSavedOrExported": false,
+  "serviceCancelled": true,
+  "scope": "Actual S22 on-tap path; indoor sensor availability is environment-dependent"
+}

@@ -1,0 +1,6 @@
+{
+  "package": "com.civichud.maintenance",
+  "fatalExceptions": 0,
+  "inspectedOwnedCrashBlocks": 0,
+  "method": "Android crash buffer filtered by package; expected force-stop is not a crash"
+}

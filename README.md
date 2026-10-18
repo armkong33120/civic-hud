@@ -1,3 +1,7 @@
+## Android MVP — 18 October 2026
+
+The native Android tracker is now implemented and S22 simulation-tested. Start at [android/README.md](android/README.md) and [morning car-test guide](android/MORNING_TEST_GUIDE.md). All55unit tests and A–E device simulation checks pass. Actual car/adapter and outdoorGPSfix validation are pending. Cloud/login are not built. Historical Android-as-proposal statements below are superseded by this update. Public repository exports source and aggregate test evidence only; raw phone databases, UI screenshots and logs remain local.
+
 # CivicHUD — ESP32 firmware and Android product handoff
 
 โครงการแจ้งเตือนการบำรุงรักษารถจากเลขไมล์ มีเฟิร์มแวร์ ESP32 ที่เคยทดสอบกับรถจริง และข้อกำหนดสำหรับแอป Android รุ่นต่อไป ใช้บัญชีฟรีประมาณ 20 คนและคลาวด์ของเจ้าของโครงการ

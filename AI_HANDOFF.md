@@ -1,3 +1,7 @@
+## Latest handoff — 18 October 2026
+
+**Android is implemented now.** Read `android/README.md`, `android/docs/CONTRACTS.md`, `android/AGENT_LOOP_STATE.md`, `android/MORNING_TEST_GUIDE.md`, and `android/verification/TEST_SUMMARY.json` first. Android uses only PID010Dspeedintegration with3s cutoff; never port the historical ESP32 counter method into it. Debug simulation is shell-protected and uses a separate Room database. Real Bluetooth SPP is implemented but actual-car testing is pending. Azure CLI was inspected; no cloud resources/auth/sync were built. Older proposal/status paragraphs below are historical and superseded.
+
 # AI handoff — read this first
 
 ## Objective

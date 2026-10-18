@@ -1,0 +1,54 @@
+{
+  "date": "2026-10-18",
+  "deviceModel": "SM-S901E",
+  "android": 16,
+  "simulationIsolated": true,
+  "unitTests": [
+    {
+      "suite": "com.civichud.maintenance.service.obd.Elm327ProtocolHandlerTest",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "suite": "com.civichud.maintenance.data.TrackerValidationTest",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "suite": "com.civichud.maintenance.domain.Elm327ResponseParserTest",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "suite": "com.civichud.maintenance.domain.MaintenanceCalculatorTest",
+      "tests": 13,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "suite": "com.civichud.maintenance.domain.SpeedDistanceIntegratorTest",
+      "tests": 18,
+      "failures": 0,
+      "errors": 0
+    }
+  ],
+  "totalUnitTests": 55,
+  "A": true,
+  "B": true,
+  "gapAddedKm": 0.0,
+  "C": true,
+  "backgroundScope": "HOME + am make-uid-idle; not full forced Doze or screen lock",
+  "D": true,
+  "E": true,
+  "freshFirstSampleZero": true,
+  "positiveColdRestartExact": true,
+  "malformedInputNoCrash": true,
+  "customRulesAndAndroidAlerts": true,
+  "actualCarTested": false,
+  "gpsFixObtained": false,
+  "cloudImplemented": false,
+  "sourceApkSha256": "19264189e82ed3d16c37fc0bacd27f1ce31ac4fe91bb8d5b150219b004386b6e"
+}
