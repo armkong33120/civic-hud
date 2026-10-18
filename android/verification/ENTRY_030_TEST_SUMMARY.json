@@ -1,0 +1,14 @@
+{
+  "version": "0.3.0",
+  "device": "SM-S901E",
+  "coldLaunchShowsWelcome": true,
+  "brandLogoVisible": true,
+  "loginAndSignupDistinct": true,
+  "unconfiguredProviderMethodsDisabled": true,
+  "offlineOptInOpensDashboard": true,
+  "hotResumeKeepsOfflineSession": true,
+  "unauthenticatedColdRestartReturnsToWelcome": true,
+  "actualMileageAndHistoryUnchanged": true,
+  "liveProviderOAuthTested": false,
+  "nativeSplashRecordingCaptured": true
+}

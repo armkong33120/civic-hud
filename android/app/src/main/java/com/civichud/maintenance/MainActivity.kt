@@ -18,7 +18,7 @@ class MainActivity:ComponentActivity() {
  private val model:TrackerViewModel by viewModels()
  private var pendingBluetooth:(()->Unit)?=null
  private val bluetoothPermission=registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { grants->
-  if(grants.values.all{it}) pendingBluetooth?.invoke()
+  if(grants.values.all{it}) { requestNotifications();pendingBluetooth?.invoke() }
   else (application as TrackerApplication).graph.message.value="ต้องอนุญาต Bluetooth เพื่อเชื่อม OBD2"
   pendingBluetooth=null
  }
@@ -34,18 +34,24 @@ class MainActivity:ComponentActivity() {
  private val locationPermission=registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()){grants->
   if(grants.values.any{it})model.captureLocation() else (application as TrackerApplication).graph.message.value="ไม่อนุญาตตำแหน่ง กรอกสถานที่เองได้"
  }
+ private fun requestNotifications(){
+  if(Build.VERSION.SDK_INT>=33 && checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS)!=android.content.pm.PackageManager.PERMISSION_GRANTED)notificationPermission.launch(Manifest.permission.POST_NOTIFICATIONS)
+ }
  private fun withBluetooth(action:()->Unit) {
   if(Build.VERSION.SDK_INT>=31 && (checkSelfPermission(Manifest.permission.BLUETOOTH_CONNECT)!=android.content.pm.PackageManager.PERMISSION_GRANTED || checkSelfPermission(Manifest.permission.BLUETOOTH_SCAN)!=android.content.pm.PackageManager.PERMISSION_GRANTED)) {
    pendingBluetooth=action;bluetoothPermission.launch(arrayOf(Manifest.permission.BLUETOOTH_CONNECT,Manifest.permission.BLUETOOTH_SCAN))
-  }else action()
+  }else { requestNotifications();action() }
  }
  override fun onCreate(savedInstanceState:Bundle?) {
   super.onCreate(savedInstanceState)
   window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-  if(Build.VERSION.SDK_INT>=33 && checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS)!=android.content.pm.PackageManager.PERMISSION_GRANTED)notificationPermission.launch(Manifest.permission.POST_NOTIFICATIONS)
+  if(Build.VERSION.SDK_INT>=31) splashScreen.setOnExitAnimationListener { view ->
+   val reduced=(application as TrackerApplication).graph.appearance.state.value.reduceMotion
+   view.animate().alpha(0f).setDuration(if(reduced) 0L else 180L).withEndAction { view.remove() }.start()
+  }
   setContent {
    val state=model.state.collectAsStateWithLifecycle().value
-   TrackerScreen(state,TrackerActions(
+   AppEntry(state,TrackerActions(
     onRefreshDevices={withBluetooth{model.refreshDevices()}},onConnect={address->withBluetooth{model.connect(address)}},
     onStartSimulation={withBluetooth{model.startSimulation()}},onStop=model::stop,onCalibrate=model::calibrate,
     onSaveRule=model::saveRule,onDeleteRule=model::deleteRule,onLogService=model::logService,

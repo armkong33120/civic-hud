@@ -1,3 +1,7 @@
+## 0.3.0 entry flow
+
+Native splash → login/signup welcome for unauthenticated sessions. Provider-specific cards are availability indicators and remain disabled until provider routing is registered and verified. If the existing broker config is complete, the welcome screen can open its hosted account flow (which must expose its verified sign-up/sign-in options). No invented provider hints or fake email form is used. Explicit offline entry is a guest session, not successful authentication. Account tokens remain memory-only as described below; process restart therefore requires fresh login once providers are enabled.
+
 # ระบบบัญชี — สิ่งที่เตรียมแล้วและขั้นตอนเปิดใช้
 
 18 ตุลาคม 2026 — เจ้าของยังไม่ได้ลงทะเบียนแอปกับผู้ให้บริการ จึงเตรียม client และสัญญา API โดยยังไม่เปิดล็อกอินจริง

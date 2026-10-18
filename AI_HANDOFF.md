@@ -1,3 +1,7 @@
+## Android0.3.0 — launch/account entry update
+
+Branded native vector splash now leads to login/signup choice for unauthenticated users. Google/LINE/Facebook/email remain pending activation; explicit offline entry opens the existing dashboard without fake login.68 unit tests and S22 entry-flow checks pass; mileage/history preserved. See `android/CHANGELOG.md` and `android/docs/RELEASE_PROCESS.md`. Every delivered update must include version/changelog and verified GitHub push/tag.
+
 ## Latest Android UX/account preparation — 18 October 2026
 
 Android0.2.0 adds editable vehicle profiles, persisted appearance/reduced motion, modern Compose transitions and durable local feedback.68 unit tests and upgraded-S22 simulation/migration checks pass. Browser OIDC/PKCE account client and Google/LINE/Facebook/email setup requirements are prepared; providers/backend are NOT registered or live. Offline core works without an account. Read `android/docs/UX_UPGRADE_REPORT.md`, `android/docs/AUTH_SETUP.md`, `android/docs/AUTH_PROVIDER_ANALYSIS.md`. This supersedes old “no auth code” wording only for client preparation; no cloud provisioning/sync/live authentication is claimed.

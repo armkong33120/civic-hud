@@ -1,0 +1,9 @@
+<resources>
+ <style name="Theme.Tracker" parent="android:style/Theme.Material.Light.NoActionBar">
+  <item name="android:windowBackground">#123E32</item>
+  <item name="android:colorAccent">#25814A</item>
+  <item name="android:windowSplashScreenBackground">#123E32</item>
+  <item name="android:windowSplashScreenAnimatedIcon">@drawable/ic_tracker_splash</item>
+  <item name="android:windowSplashScreenAnimationDuration">360</item>
+ </style>
+</resources>

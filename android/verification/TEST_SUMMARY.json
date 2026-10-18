@@ -63,7 +63,7 @@
   "gpsFixObtained": false,
   "cloudImplemented": false,
   "sourceApkSha256": "19264189e82ed3d16c37fc0bacd27f1ce31ac4fe91bb8d5b150219b004386b6e",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "legacyDeviceScenariosVersion": "0.1.0",
   "upgradeDeviceScenarios": {
     "normalDistanceAndCountdown": true,
@@ -75,5 +75,20 @@
     "liveOAuthTested": false,
     "actualCarTested": false
   },
-  "liveAuthOperational": false
+  "liveAuthOperational": false,
+  "entryFlow": {
+    "version": "0.3.0",
+    "device": "SM-S901E",
+    "coldLaunchShowsWelcome": true,
+    "brandLogoVisible": true,
+    "loginAndSignupDistinct": true,
+    "unconfiguredProviderMethodsDisabled": true,
+    "offlineOptInOpensDashboard": true,
+    "hotResumeKeepsOfflineSession": true,
+    "unauthenticatedColdRestartReturnsToWelcome": true,
+    "actualMileageAndHistoryUnchanged": true,
+    "liveProviderOAuthTested": false,
+    "nativeSplashRecordingCaptured": true
+  },
+  "upgradeDeviceScenariosVersion": "0.2.0"
 }

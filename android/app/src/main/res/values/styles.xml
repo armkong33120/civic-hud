@@ -1,0 +1,6 @@
+<resources>
+ <style name="Theme.Tracker" parent="android:style/Theme.Material.Light.NoActionBar">
+  <item name="android:windowBackground">#123E32</item>
+  <item name="android:colorAccent">#25814A</item>
+ </style>
+</resources>

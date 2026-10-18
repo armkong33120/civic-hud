@@ -1,7 +1,7 @@
 plugins { id("com.android.application"); kotlin("android"); id("org.jetbrains.kotlin.plugin.compose") }
 android {
  namespace="com.civichud.maintenance"; compileSdk=36
- defaultConfig { applicationId="com.civichud.maintenance"; minSdk=26; targetSdk=36; versionCode=2; versionName="0.2.0" }
+ defaultConfig { applicationId="com.civichud.maintenance"; minSdk=26; targetSdk=36; versionCode=3; versionName="0.3.0" }
  defaultConfig {
   manifestPlaceholders["appAuthRedirectScheme"] = "com.civichud.maintenance"
   listOf("AUTH_DISCOVERY_URL", "AUTH_CLIENT_ID", "AUTH_SCOPE", "ACCOUNT_API_URL").forEach { key ->

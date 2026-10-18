@@ -1,3 +1,7 @@
+## Android0.3.0 — launch/account entry update
+
+Branded native vector splash now leads to login/signup choice for unauthenticated users. Google/LINE/Facebook/email remain pending activation; explicit offline entry opens the existing dashboard without fake login.68 unit tests and S22 entry-flow checks pass; mileage/history preserved. See `android/CHANGELOG.md` and `android/docs/RELEASE_PROCESS.md`. Every delivered update must include version/changelog and verified GitHub push/tag.
+
 ## Android0.2.0 update
 
 Editable vehicle profiles, modern Compose motion/themes, local feedback outbox and configurable account-client preparation are under [android](android/README.md). [Upgrade report](android/docs/UX_UPGRADE_REPORT.md) and [account setup](android/docs/AUTH_SETUP.md) separate verified offline/device behavior from unconfigured live providers/backend.68 unit tests pass; no live cloud-auth or actual-car validation is claimed.

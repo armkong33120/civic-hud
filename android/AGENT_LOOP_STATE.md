@@ -61,3 +61,12 @@ No cloud/auth implementation. No real ECU test claims from simulation. Do not us
 - Detailed scope:docs/UX_UPGRADE_REPORT.md; provider setup:docs/AUTH_SETUP.md. This completes preparation, not live cloud-account delivery.
 - Final installed build: appearance choices confirmed across force-stop/relaunch, unconfigured account login disabled, light/dark captures visually reviewed. Appearance writes committed off the UI thread before publishing saved state. Final device appearance restored to system; reduce motion off; real tracking stopped.
 - Final verification package refreshed; source/docs publish excludes raw screenshots, phone databases/backups/logs and local configuration.
+
+### 0.3.0 launch/account entry iteration — 18 Oct 2026
+- Owner requested branded light splash → login/signup choice for unauthenticated entry, plus GitHub version/changelog for every update.
+- Added native Android31+ branded vector splash+short exit animation, shared launcher/welcome mark and Compose account entry. No artificial loading timer or network requirement to reach entry.
+- Account welcome separates login/signup, lists Google/LINE/Facebook/email as awaiting activation; real configured broker remains available through its hosted flow. Explicit offline session path preserves usable offline core; guest is never marked signed-in.
+- Notification permission deferred until Bluetooth use. VersionCode3/versionName0.3.0. Device gate/build/public changelog pending.
+- 0.3.0 Loop3:68 unit tests pass; debug/unsignedrelease builds pass, no Kotlinwarnings.
+- 0.3.0 Loop4:S22 installed build passes cold welcome/logo, signup switch, disabled pending providers, explicit offline entry, hot resume and cold restart gate. Actual mileage/history unchanged. Native launch video captured locally; app-owned crash records absent.
+- 0.3.0 Loop5:reviewed account welcome screenshot, no fake sign-in/registration and no new cloud provisioning. No extra loading timer; Android can skip native splash on hot resume. Sign-in session remains memory-only while provider/backend setup is pending. GitHub CHANGELOG/version/tag update required for each delivered build from now on.

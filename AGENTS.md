@@ -1,3 +1,5 @@
+Owner requires every delivered Android update to bump versionCode/versionName, update android/CHANGELOG.md and publish verified source/docs plus a version tag to GitHub. Follow android/docs/RELEASE_PROCESS.md.
+
 # Working instructions for the next AI
 
 Read `AI_HANDOFF.md`, `docs/CURRENT_STATE.md`, `docs/DECISIONS.md`, then the relevant source files before editing.
